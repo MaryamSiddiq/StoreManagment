@@ -1,0 +1,120 @@
+﻿<Page x:Class="StoreMS.Pages.SignIn"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StoreMS.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="700"
+      Title="Librarian Sign In">
+
+    <Border Background="{DynamicResource SecundaryBackgroundColor}"
+            CornerRadius="12">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MinWidth ="400"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0"
+                    Background="{DynamicResource SecundaryBackgroundColor}"
+                    CornerRadius="12 12 12 12">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="140"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Top Label -->
+                    <Grid Grid.Row="0" Margin="125 0 125 0">
+                        <Grid.Background>
+                            <ImageBrush ImageSource="/SignInLogo.png"/>
+                        </Grid.Background>
+                    </Grid>
+
+
+                    <Grid Grid.Row="1">
+                        <Viewbox HorizontalAlignment="Center" Height="391" Width ="600" Margin="20 -20 20 20" Stretch="Uniform" VerticalAlignment="Center">
+                            <Grid Height="391" Width="600">
+                                <Label Content="Let's Sign You In"
+                                       HorizontalAlignment="Left" VerticalAlignment="Top"
+                                       Margin="70,50,0,0"
+                                       FontSize="26" FontFamily="Montserrat"
+                                       FontWeight="ExtraBold"/>
+                                <Button x:Name="btnReset"
+                                    Width="25" Height="23" Margin="0,100,75,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    BorderBrush="Transparent"
+                                    Click="btnReset_Click">
+                                    <Button.Background>
+                                        <VisualBrush>
+                                            <VisualBrush.Visual>
+                                                <Path Data="M2 12C2 16.97 6.03 21 11 21C13.39 21 15.68 20.06 17.4 18.4L15.9 16.9C14.63 18.25 12.86 19 11 19C4.76 19 1.64 11.46 6.05 7.05C10.46 2.64 18 5.77 18 12H15L19 16H19.1L23 12H20C20 7.03 15.97 3 11 3C6.03 3 2 7.03 2 12Z" Fill="{DynamicResource TertiaryBackgroundColor}"/>
+                                            </VisualBrush.Visual>
+                                        </VisualBrush>
+                                    </Button.Background>
+                                </Button>
+                                <Border Background="{DynamicResource PrimaryBackgroundColor}" 
+                                        CornerRadius="5" Margin="0,130,0,0" Width="450" Height="35"
+                                        HorizontalAlignment="Center" VerticalAlignment="Top"
+                                        Padding="5 5 0 0">
+                                    <TextBox x:Name="txtID" 
+                                         Style="{StaticResource CustomTextBoxStyle}" 
+                                         HorizontalAlignment="Stretch" 
+                                         VerticalAlignment="Stretch" 
+                                         Text="Enter the ID" 
+                                         GotFocus="txtLabelPlace_GotFocus" 
+                                         LostFocus="txtLabelPlace_LostFocus"/>
+                                </Border>
+                                <Border Background="{DynamicResource PrimaryBackgroundColor}" 
+                                        CornerRadius="5" Margin="0,180,0,0" Width="450" Height="35"
+                                        HorizontalAlignment="Center" VerticalAlignment="Top"
+                                        Padding="5 5 0 0">
+                                    <TextBox x:Name="txtPassword" 
+                                         Style="{StaticResource CustomTextBoxStyle}" 
+                                         HorizontalAlignment="Stretch" 
+                                         VerticalAlignment="Stretch" 
+                                         Text="Enter the Password" 
+                                         GotFocus="txtLabelPlace_GotFocus" 
+                                         LostFocus="txtLabelPlace_LostFocus"/>
+                                </Border>
+                                <Border x:Name="btnSignIn" 
+                                    Background="{DynamicResource PrimaryBackgroundColor}" 
+                                    CornerRadius="5" 
+                                    Padding="5,5" 
+                                    HorizontalAlignment="Center"
+                                    Margin="0, 270,0,0"  
+                                    Width="450" 
+                                    Height="40"
+                                    VerticalAlignment="Top" 
+                                    Cursor="Hand"
+                                    MouseDown="btnSignIn_MouseDown" 
+                                    MouseEnter="btnSignIn_MouseEnter" 
+                                    MouseLeave="btnSignIn_MouseLeave">
+                                    <Grid>
+                                        <TextBlock x:Name="txtSignIn" Text="SIGN IN"
+                                            FontFamily="Montserrat"
+                                            Foreground="{DynamicResource TextSecundaryColor}" 
+                                            FontSize="20" 
+                                            FontWeight="Bold" 
+                                            TextAlignment="Center" 
+                                            Margin="3,3,3,0" />
+                                        <Path x:Name="nextIcon" Data="M5,21A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3H19A2,2 0 0,1 21,5V19C21,20.11 20.1,21 19,21H5M6,13H14.5L11,16.5L12.42,17.92L18.34,12L12.42,6.08L11,7.5L14.5,11H6V13Z"
+                                            Fill="{DynamicResource TextSecundaryColor}" 
+                                              HorizontalAlignment="Right"
+                                              Margin="0 4 0 0"
+                                              Width="30"/>
+                                    </Grid>
+                                </Border>
+
+                            </Grid>
+                        </Viewbox>
+
+                    </Grid>
+
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+
+</Page>
