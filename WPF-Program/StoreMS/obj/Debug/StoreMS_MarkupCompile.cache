@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\
 StoreMS
 none
 false
 DEBUG;TRACE
-C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\App.xaml
-9-770898936
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\App.xaml
+20-2032529214
 
-11-1077005103
-201816626615
-Assets\Icons.xaml;Controls\MenuItem.xaml;Controls\UserPopup.xaml;Pages\User\UserHP.xaml;Pages\Admin\AdminHP.xaml;StartWindow.xaml;Pages\SignIn.xaml;Styles\Style.xaml;Themes\Theme.xaml;
+221385443467
+62162235259
+Assets\Icons.xaml;Controls\MenuItem.xaml;Controls\UserPopup.xaml;CustomGridView.xaml;Pages\Admin\Customers.xaml;Pages\Admin\Dashboard.xaml;Pages\Admin\GiftCards.xaml;Pages\Admin\Logs.xaml;Pages\Admin\Products.xaml;Pages\Admin\Reports.xaml;Pages\Admin\Transactions.xaml;Pages\Admin\Users.xaml;Pages\User\Account.xaml;Pages\User\POS.xaml;Pages\User\CashierHP.xaml;Pages\Admin\AdminHP.xaml;StartWindow.xaml;Pages\SignIn.xaml;Styles\Style.xaml;Themes\Theme.xaml;
 
 False
 

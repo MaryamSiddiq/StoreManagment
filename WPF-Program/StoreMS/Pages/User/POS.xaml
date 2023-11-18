@@ -1,0 +1,152 @@
+﻿<Page x:Class="StoreMS.Pages.Cashier.POS"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:StoreMS.Pages.Cashier"
+      mc:Ignorable="d"
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="Point of Sale">
+    <Border Background="{DynamicResource SecundaryBackgroundColor}" CornerRadius="12">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="140" />
+                <RowDefinition Height="100" />
+            </Grid.RowDefinitions>
+
+            <!-- Title Label -->
+            <Label Grid.Row="0" Content="POINT OF SALE"
+                   FontSize="40" FontWeight="Bold" FontFamily="Montserrat"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+            <!-- Items List -->
+            <DataGrid Grid.Row="1"
+                  x:Name="itemsDataGrid"
+                  AutoGenerateColumns="False"
+                  Margin="5"
+                  BorderBrush="{DynamicResource TextFourthColor}"
+                  FontSize="16">
+                <!-- Column Definitions -->
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Item Name" Binding="{Binding ItemName}" Width="*" />
+                    <DataGridTextColumn Header="Price" Binding="{Binding Price}" Width="*" />
+                    <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="*" />
+                    <DataGridTemplateColumn Header="Actions" Width="80">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete" Width="55" Click="DeleteItemButton_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!-- Additional Columns for Items can be added here -->
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!-- Total Price Label -->
+            <Label x:Name="lblTotalPrice"
+                Grid.Row="2" Content="Total Price: $0.00"
+                   FontSize="20" FontWeight="Bold" FontFamily="Montserrat"
+                   HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0"/>
+
+
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="220" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Category Name TextBox -->
+                <Border Grid.Column="0" Grid.ColumnSpan="2"
+                        Background="{DynamicResource PrimaryBackgroundColor}"
+                        CornerRadius="0" Margin="20,20,20,0" Width="Auto" Height="35"
+                        HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                        Padding="5 5 0 0">
+                    <TextBox x:Name="txtItemName"
+                             Style="{StaticResource CustomTextBoxStyle}"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Stretch"
+                             Text="Search Item Name"
+                             GotFocus="txtLabelPlace_GotFocus"
+                             LostFocus="txtLabelPlace_LostFocus"/>
+                </Border>
+                <!-- Category Name TextBox -->
+                <Border Grid.Column="0" Grid.ColumnSpan="2"
+                        Background="{DynamicResource PrimaryBackgroundColor}"
+                        CornerRadius="0" Margin="20,80,20,0" Width="Auto" Height="35"
+                        HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                        Padding="5 5 0 0">
+                    <TextBox x:Name="txtItemQuantity"
+                             Style="{StaticResource CustomTextBoxStyle}"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Stretch"
+                             Text="Enter the Item Quantity"
+                             GotFocus="txtLabelPlace_GotFocus"
+                             LostFocus="txtLabelPlace_LostFocus"/>
+                </Border>
+
+                <!-- Additional Input Fields for Categories can be added here -->
+
+                <!-- Add Category Button -->
+                <Border x:Name="btnAddCart"
+                        Grid.Column="2"
+                        Background="{DynamicResource PrimaryBackgroundColor}"
+                        CornerRadius="14"
+                        Padding="5,5"
+                        Margin="0,0,20,0"
+                        VerticalAlignment="Center"
+                        Height="80"
+                        Cursor="Hand"
+                        MouseDown="btnAddCart_MouseDown"
+                        MouseEnter="btnAddCart_MouseEnter"
+                        MouseLeave="btnAddCart_MouseLeave">
+                    <Grid>
+                        <TextBlock x:Name="txtAdd" Text="Add to"
+                                   FontFamily="Montserrat"
+                                   Foreground="{DynamicResource TextSecundaryColor}"
+                                   FontSize="26"
+                                   FontWeight="Bold"
+                                   TextAlignment="Center"
+                                   Margin="10,5,-5,-2" />
+                        <TextBlock x:Name="txtAdd2" Text="Cart"
+                                   FontFamily="Montserrat"
+                                   Foreground="{DynamicResource TextSecundaryColor}"
+                                   FontSize="26"
+                                   FontWeight="Bold"
+                                   TextAlignment="Center"
+                                   Margin="10,35,-5,-2" />
+                        <Path x:Name="addIcon"
+                              Data="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M13,7H11V11H7V13H11V17H13V13H17V11H13V7Z"
+                              Fill="{DynamicResource TextSecundaryColor}"
+                              HorizontalAlignment="Left"
+                              Width="35" Height="35"
+                              Margin="9,9,0,1" />
+                    </Grid>
+                </Border>
+            </Grid>
+            <!-- Confirm Order Button -->
+            <Border x:Name="btnConfirmOrder"
+                    Grid.Row="5"
+                    Background="{DynamicResource PrimaryBackgroundColor}"
+                    CornerRadius="14"
+                    Padding="5,5"                    
+                    VerticalAlignment="Center" HorizontalAlignment="Center"
+                    Height="55" Width="300"
+                    Cursor="Hand"
+                    MouseDown="btnConfirmOrder_MouseDown"
+                    MouseEnter="btnConfirmOrder_MouseEnter"
+                    MouseLeave="btnConfirmOrder_MouseLeave">
+                <TextBlock x:Name="txtConfirmOrder" Text="Confirm Order"
+                           FontFamily="Montserrat"
+                           Foreground="{DynamicResource TextSecundaryColor}"
+                           FontSize="26"
+                           FontWeight="Bold"
+                           TextAlignment="Center"
+                           Margin="0,7,0,0" />
+            </Border>
+        </Grid>
+    </Border>
+</Page>

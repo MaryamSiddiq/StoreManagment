@@ -1,0 +1,101 @@
+﻿<Page x:Class="StoreMS.Pages.User.Account"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:StoreMS.Pages.User"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Account">
+
+    <Border Background="{DynamicResource SecundaryBackgroundColor}" CornerRadius="12">
+        <Grid Margin="90 0 90 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+
+            <!-- Title Label -->
+            <Label Grid.Row="0" Content="ACCOUNT INFORMATION"
+                   FontSize="40" FontWeight="Bold" FontFamily="Montserrat"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+            <!-- User Information -->
+            <Label Grid.Row="2" Content="Username:"
+                   FontSize="18" FontWeight="Bold" FontFamily="Montserrat"
+                   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            <TextBox x:Name="txtUsername"
+                     Style="{StaticResource CustomTextBoxStyle}"
+                     Grid.Row="2"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Center"
+                     IsReadOnly="True"
+                     Text="SampleUsername" Margin="120,0,0,0"/>
+
+            <!-- Change Name -->
+            <Label Grid.Row="3" Content="Name"
+                   FontSize="18" FontWeight="Bold" FontFamily="Montserrat"
+                   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            <Border Grid.Row="3"
+                    Background="{DynamicResource PrimaryBackgroundColor}"
+                    CornerRadius="5"
+                    Margin="120,10,10,0"     
+                    Height="30"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Padding="3 4 0 0">
+                <TextBox x:Name="txtName"
+                         Style="{StaticResource CustomTextBoxStyle}"
+                         HorizontalAlignment="Stretch"
+                         VerticalAlignment="Stretch"
+                         Text="Sample Name"
+                         GotFocus="txtLabelPlace_GotFocus"
+                         LostFocus="txtLabelPlace_LostFocus"/>
+            </Border>
+            <!-- Change Password -->
+            <Label Grid.Row="4" Content="Password:"
+                   FontSize="18" FontWeight="Bold" FontFamily="Montserrat"
+                   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            <Border Grid.Row="4"
+                    Background="{DynamicResource PrimaryBackgroundColor}"
+                    CornerRadius="5"
+                    Margin="120,10,10,0"     
+                    Height="30"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Padding="3 4 0 0">
+                <TextBox x:Name="txtPassword"
+                         Style="{StaticResource CustomTextBoxStyle}"
+                         HorizontalAlignment="Stretch"
+                         VerticalAlignment="Stretch"
+                         Text="Sample Password"
+                         GotFocus="txtLabelPlace_GotFocus"
+                         LostFocus="txtLabelPlace_LostFocus"/>
+            </Border>
+            <!-- Save Changes Button -->
+            <Border x:Name="btnSaveChanges"
+                    Grid.Row="5"
+                    Background="{DynamicResource PrimaryBackgroundColor}"
+                    CornerRadius="14"
+                    Padding="5,5"                    
+                    VerticalAlignment="Center" HorizontalAlignment="Center"
+                    Height="55" Width="240"
+                    Cursor="Hand"
+                    MouseDown="btnSaveChanges_MouseDown"
+                    MouseEnter="btnSaveChanges_MouseEnter"
+                    MouseLeave="btnSaveChanges_MouseLeave">
+                <TextBlock x:Name="txtSaveChanges" Text="Save Changes"
+                           FontFamily="Montserrat"
+                           Foreground="{DynamicResource TextSecundaryColor}"
+                           FontSize="26"
+                           FontWeight="Bold"
+                           TextAlignment="Center"
+                           Margin="0,7,0,0" />
+            </Border>
+        </Grid>
+    </Border>
+</Page>

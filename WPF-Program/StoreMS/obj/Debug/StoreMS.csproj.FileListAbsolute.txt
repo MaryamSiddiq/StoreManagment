@@ -47,7 +47,6 @@ C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Stor
 C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\StoreMS.csproj.SuggestedBindingRedirects.cache
 C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Controls\MenuItem.g.cs
 C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Controls\UserPopup.g.cs
-C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\User\UserHP.g.cs
 C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\StartWindow.g.cs
 C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\App.g.cs
 C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\GeneratedInternalTypeHelper.g.cs
@@ -57,7 +56,6 @@ C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\App.
 C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Assets\Icons.baml
 C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Controls\MenuItem.baml
 C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Controls\UserPopup.baml
-C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\User\UserHP.baml
 C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\StartWindow.baml
 C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Styles\Style.baml
 C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Themes\Theme.baml
@@ -72,3 +70,318 @@ C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Page
 C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\SignIn.baml
 C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\Admin\AdminHP.g.cs
 C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\Admin\AdminHP.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\User\CashierHP.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\User\CashierHP.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\CustomGridView.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\CustomGridView.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\Admin\Users.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\Admin\Users.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\ControlzEx.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.BootstrapIcons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.BoxIcons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Codicons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Coolicons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Core.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Entypo.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.EvaIcons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.FeatherIcons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.FileIcons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Fontaudio.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.FontAwesome.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Fontisto.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.ForkAwesome.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Ionicons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.JamIcons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Material.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.MaterialDesign.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.MaterialLight.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Microns.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Modern.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Octicons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.PicolIcons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.PixelartIcons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.RadixIcons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.RemixIcon.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.RPGAwesome.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.SimpleIcons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Typicons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Unicons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.VaadinIcons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.WeatherIcons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Zondicons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\Microsoft.Xaml.Behaviors.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\ControlzEx.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\ControlzEx.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.BootstrapIcons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.BootstrapIcons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.BoxIcons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.BoxIcons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Codicons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Codicons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Coolicons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Coolicons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Core.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Core.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Entypo.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Entypo.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.EvaIcons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.EvaIcons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.FeatherIcons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.FeatherIcons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.FileIcons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.FileIcons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Fontaudio.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Fontaudio.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.FontAwesome.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.FontAwesome.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Fontisto.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Fontisto.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.ForkAwesome.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.ForkAwesome.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Ionicons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Ionicons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.JamIcons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.JamIcons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Material.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Material.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.MaterialDesign.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.MaterialDesign.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.MaterialLight.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.MaterialLight.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Microns.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Microns.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Modern.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Modern.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Octicons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Octicons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.PicolIcons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.PicolIcons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.PixelartIcons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.PixelartIcons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.RadixIcons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.RadixIcons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.RemixIcon.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.RemixIcon.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.RPGAwesome.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.RPGAwesome.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.SimpleIcons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.SimpleIcons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Typicons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Typicons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Unicons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Unicons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.VaadinIcons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.VaadinIcons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.WeatherIcons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.WeatherIcons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Zondicons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Zondicons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\Microsoft.Xaml.Behaviors.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\de\MahApps.Metro.resources.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\Admin\Products.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\Admin\Products.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\Admin\Customers.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\Admin\Customers.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\Admin\Categories.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\Admin\Categories.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\Admin\GiftCards.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\Admin\GiftCards.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\Admin\Dashboard.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\Admin\Logs.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\Admin\Reports.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\Admin\Transactions.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\Admin\Dashboard.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\Admin\Logs.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\Admin\Reports.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\Admin\Transactions.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\LiveCharts.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\LiveCharts.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\LiveCharts.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\User\POS.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\User\POS.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\User\Account.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\User\Inventory.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\User\Account.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\User\Inventory.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\StoreMS.csproj.AssemblyReference.cache
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\StoreMS.csproj.SuggestedBindingRedirects.cache
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\CustomGridView.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Controls\MenuItem.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Controls\UserPopup.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\CustomGridView.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Pages\Admin\Customers.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Pages\Admin\Dashboard.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Pages\Admin\GiftCards.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Pages\Admin\Logs.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Pages\Admin\Products.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Pages\Admin\Reports.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Pages\Admin\Transactions.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Pages\Admin\Users.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Pages\User\Account.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Pages\User\POS.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Pages\User\CashierHP.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Pages\Admin\AdminHP.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\StartWindow.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Pages\SignIn.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\App.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\StoreMS_MarkupCompile.cache
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\StoreMS_MarkupCompile.lref
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\StoreMS.exe
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\StoreMS.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\StoreMS.exe.config
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\StoreMS.exe
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\StoreMS.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\ControlzEx.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\itextsharp.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\LiveCharts.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.BootstrapIcons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.BoxIcons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Codicons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Coolicons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Core.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Entypo.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.EvaIcons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.FeatherIcons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.FileIcons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Fontaudio.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.FontAwesome.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Fontisto.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.ForkAwesome.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Ionicons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.JamIcons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Material.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.MaterialDesign.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.MaterialLight.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Microns.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Modern.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Octicons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.PicolIcons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.PixelartIcons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.RadixIcons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.RemixIcon.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.RPGAwesome.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.SimpleIcons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Typicons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Unicons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.VaadinIcons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.WeatherIcons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Zondicons.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\Microsoft.Xaml.Behaviors.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\ControlzEx.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\ControlzEx.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\itextsharp.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\LiveCharts.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\LiveCharts.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.BootstrapIcons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.BootstrapIcons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.BoxIcons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.BoxIcons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Codicons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Codicons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Coolicons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Coolicons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Core.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Core.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Entypo.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Entypo.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.EvaIcons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.EvaIcons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.FeatherIcons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.FeatherIcons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.FileIcons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.FileIcons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Fontaudio.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Fontaudio.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.FontAwesome.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.FontAwesome.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Fontisto.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Fontisto.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.ForkAwesome.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.ForkAwesome.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Ionicons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Ionicons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.JamIcons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.JamIcons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Material.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Material.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.MaterialDesign.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.MaterialDesign.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.MaterialLight.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.MaterialLight.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Microns.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Microns.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Modern.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Modern.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Octicons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Octicons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.PicolIcons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.PicolIcons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.PixelartIcons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.PixelartIcons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.RadixIcons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.RadixIcons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.RemixIcon.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.RemixIcon.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.RPGAwesome.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.RPGAwesome.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.SimpleIcons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.SimpleIcons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Typicons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Typicons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Unicons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Unicons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.VaadinIcons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.VaadinIcons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.WeatherIcons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.WeatherIcons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Zondicons.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\MahApps.Metro.IconPacks.Zondicons.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\Microsoft.Xaml.Behaviors.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\bin\Debug\de\MahApps.Metro.resources.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\App.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Assets\Icons.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Controls\MenuItem.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Controls\UserPopup.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Pages\Admin\Customers.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Pages\Admin\Dashboard.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Pages\Admin\GiftCards.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Pages\Admin\Logs.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Pages\Admin\Products.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Pages\Admin\Reports.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Pages\Admin\Transactions.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Pages\Admin\Users.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Pages\User\Account.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Pages\User\POS.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Pages\User\CashierHP.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Pages\Admin\AdminHP.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\StartWindow.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Pages\SignIn.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Styles\Style.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\Themes\Theme.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\StoreMS.g.resources
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\StoreMS.Properties.Resources.resources
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\StoreMS.csproj.GenerateResource.cache
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\StoreMS.csproj.CoreCompileInputs.cache
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\StoreMS.csproj.CopyComplete

@@ -22,30 +22,28 @@ namespace StoreMS
     /// </summary>
     public partial class AdminHP : Window
     {
-        Uri Student;
-        Uri Advisor;
-        Uri Project;
-        Uri Group;
-        Uri SGroup;
-        Uri AssignProject;
-        Uri AssignAdvisor;
-        Uri Evaluation;
-        Uri MarkEvaluation;
-        Uri Report;
-
+        Uri Dashboard;
+        Uri Users;
+        Uri Products;
+        Uri Customers;
+        Uri Categories;
+        Uri GiftCards;
+        Uri Transactions;
+        Uri Reports;
+        Uri Logs;
+        
         public AdminHP()
         {
             InitializeComponent();
-            Student = new Uri("Pages/Student.xaml", UriKind.RelativeOrAbsolute);            
-            Advisor = new Uri("Pages/Advisor.xaml", UriKind.RelativeOrAbsolute);
-            Project = new Uri("Pages/Project.xaml", UriKind.RelativeOrAbsolute);
-            Group = new Uri("Pages/Group.xaml", UriKind.RelativeOrAbsolute);
-            SGroup = new Uri("Pages/SGroup.xaml", UriKind.RelativeOrAbsolute);
-            AssignProject = new Uri("Pages/AssignProject.xaml", UriKind.RelativeOrAbsolute);
-            AssignAdvisor = new Uri("Pages/AssignAdvisor.xaml", UriKind.RelativeOrAbsolute);
-            Evaluation = new Uri("Pages/Evaluation.xaml", UriKind.RelativeOrAbsolute);
-            MarkEvaluation = new Uri("Pages/MarkEvaluation.xaml", UriKind.RelativeOrAbsolute);
-            Report = new Uri("Pages/Report.xaml", UriKind.RelativeOrAbsolute);            
+            Dashboard = new Uri("Pages/Admin/Dashboard.xaml", UriKind.RelativeOrAbsolute);
+            Users = new Uri("Pages/Admin/Users.xaml", UriKind.RelativeOrAbsolute);
+            Products = new Uri("Pages/Admin/Products.xaml", UriKind.RelativeOrAbsolute);
+            Customers = new Uri("Pages/Admin/Customers.xaml", UriKind.RelativeOrAbsolute);
+            Categories = new Uri("Pages/Admin/Categories.xaml", UriKind.RelativeOrAbsolute);
+            GiftCards = new Uri("Pages/Admin/GiftCards.xaml", UriKind.RelativeOrAbsolute);
+            Transactions = new Uri("Pages/Admin/Transactions.xaml", UriKind.RelativeOrAbsolute);            
+            Reports = new Uri("Pages/Admin/Reports.xaml", UriKind.RelativeOrAbsolute);            
+            Logs = new Uri("Pages/Admin/Logs.xaml", UriKind.RelativeOrAbsolute);            
         }
 
         private void BG_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -54,84 +52,68 @@ namespace StoreMS
         }
 
         // Start: MenuLeft PopupButton //
-        private void btnAuthor_MouseEnter(object sender, MouseEventArgs e)
+        private void btnDashboard_MouseEnter(object sender, MouseEventArgs e)
         {
             if (Tg_Btn.IsChecked == false)
             {
-                Popup.PlacementTarget = btnAuthor;
+                Popup.PlacementTarget = btnDashboard;
                 Popup.Placement = PlacementMode.Right;
                 Popup.IsOpen = true;
-                Header.PopupText.Text = "Authors";
+                Header.PopupText.Text = "Dashboard";
             }
         }
 
-        private void btnAuthor_MouseLeave(object sender, MouseEventArgs e)
+        private void btnDashboard_MouseLeave(object sender, MouseEventArgs e)
         {
             Popup.Visibility = Visibility.Collapsed;
             Popup.IsOpen = false;
         }
 
-        private void btnPublisher_MouseEnter(object sender, MouseEventArgs e)
+        private void btnUser_MouseEnter(object sender, MouseEventArgs e)
         {
             if (Tg_Btn.IsChecked == false)
             {
-                Popup.PlacementTarget = btnPublisher;
+                Popup.PlacementTarget = btnUser;
                 Popup.Placement = PlacementMode.Right;
                 Popup.IsOpen = true;
-                Header.PopupText.Text = "Publishers";
+                Header.PopupText.Text = "Users";
             }
         }
 
-        private void btnPublisher_MouseLeave(object sender, MouseEventArgs e)
+        private void btnUser_MouseLeave(object sender, MouseEventArgs e)
         {
             Popup.Visibility = Visibility.Collapsed;
             Popup.IsOpen = false;
         }
 
-        private void btnGenre_MouseEnter(object sender, MouseEventArgs e)
+        private void btnProduct_MouseEnter(object sender, MouseEventArgs e)
         {
             if (Tg_Btn.IsChecked == false)
             {
-                Popup.PlacementTarget = btnGenre;
+                Popup.PlacementTarget = btnProduct;
                 Popup.Placement = PlacementMode.Right;
                 Popup.IsOpen = true;
-                Header.PopupText.Text = "Genres";
+                Header.PopupText.Text = "Products";
             }
         }
 
-        private void btnGenre_MouseLeave(object sender, MouseEventArgs e)
+        private void btnProduct_MouseLeave(object sender, MouseEventArgs e)
         {
             Popup.Visibility = Visibility.Collapsed;
             Popup.IsOpen = false;
-        }      
-
-        private void btnCategory_MouseEnter(object sender, MouseEventArgs e)
+        }              
+        private void btnCustomer_MouseEnter(object sender, MouseEventArgs e)
         {
             if (Tg_Btn.IsChecked == false)
             {
-                Popup.PlacementTarget = btnCategory;
+                Popup.PlacementTarget = btnCustomer;
                 Popup.Placement = PlacementMode.Right;
                 Popup.IsOpen = true;
-                Header.PopupText.Text = "Categories";
-            }
-        }
-        private void btnCategory_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Popup.Visibility = Visibility.Collapsed;
-            Popup.IsOpen = false;
-        }
-        private void btnBooks_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (Tg_Btn.IsChecked == false)
-            {
-                Popup.PlacementTarget = btnBooks;
-                Popup.Placement = PlacementMode.Right;
-                Popup.IsOpen = true;
-                Header.PopupText.Text = "Books";
+                Header.PopupText.Text = "Customers";
             }
         }
 
-        private void btnBooks_MouseLeave(object sender, MouseEventArgs e)
+        private void btnCustomer_MouseLeave(object sender, MouseEventArgs e)
         {
             
             Popup.Visibility = Visibility.Collapsed;
@@ -139,56 +121,39 @@ namespace StoreMS
         }
         
 
-        private void btnInventory_MouseEnter(object sender, MouseEventArgs e)
+        private void btnGiftCard_MouseEnter(object sender, MouseEventArgs e)
         {
             if (Tg_Btn.IsChecked == false)
             {
-                Popup.PlacementTarget = btnInventory;
+                Popup.PlacementTarget = btnGiftCard;
                 Popup.Placement = PlacementMode.Right;
                 Popup.IsOpen = true;
-                Header.PopupText.Text = "Inventory";
+                Header.PopupText.Text = "Gift Cards";
             }
         }
 
-        private void btnInventory_MouseLeave(object sender, MouseEventArgs e)
+        private void btnGiftCard_MouseLeave(object sender, MouseEventArgs e)
         {
             Popup.Visibility = Visibility.Collapsed;
             Popup.IsOpen = false;
         }
 
-        private void btnLibrarian_MouseEnter(object sender, MouseEventArgs e)
+        private void btnTransaction_MouseEnter(object sender, MouseEventArgs e)
         {
             if (Tg_Btn.IsChecked == false)
             {
-                Popup.PlacementTarget = btnLibrarian;
+                Popup.PlacementTarget = btnTransaction;
                 Popup.Placement = PlacementMode.Right;
                 Popup.IsOpen = true;
-                Header.PopupText.Text = "Librarians";
+                Header.PopupText.Text = "Transactions";
             }
         }
 
-        private void btnLibrarian_MouseLeave(object sender, MouseEventArgs e)
+        private void btnTransaction_MouseLeave(object sender, MouseEventArgs e)
         {
             Popup.Visibility = Visibility.Collapsed;
             Popup.IsOpen = false;
         }
-        private void btnReturnBook_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (Tg_Btn.IsChecked == false)
-            {
-                Popup.PlacementTarget = btnReturnBook;
-                Popup.Placement = PlacementMode.Right;
-                Popup.IsOpen = true;
-                Header.PopupText.Text = "Return Books";
-            }
-        }
-
-        private void btnReturnBook_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Popup.Visibility = Visibility.Collapsed;
-            Popup.IsOpen = false;
-        }
-        
         private void btnReport_MouseEnter(object sender, MouseEventArgs e)
         {
             if (Tg_Btn.IsChecked == false)
@@ -201,6 +166,23 @@ namespace StoreMS
         }
 
         private void btnReport_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Popup.Visibility = Visibility.Collapsed;
+            Popup.IsOpen = false;
+        }
+        
+        private void btnLogs_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (Tg_Btn.IsChecked == false)
+            {
+                Popup.PlacementTarget = btnLogs;
+                Popup.Placement = PlacementMode.Right;
+                Popup.IsOpen = true;
+                Header.PopupText.Text = "Logs";
+            }
+        }
+
+        private void btnLogs_MouseLeave(object sender, MouseEventArgs e)
         {
             Popup.Visibility = Visibility.Collapsed;
             Popup.IsOpen = false;
@@ -228,48 +210,48 @@ namespace StoreMS
         }
         // End: Button Close | Restore | Minimize
 
-        private void btnAuthor_Click(object sender, RoutedEventArgs e)
+        private void btnDashboard_Click(object sender, RoutedEventArgs e)
         {
-            //fContainer.Navigate(Student);
+            fContainer.Navigate(Dashboard);
         }
 
-        private void btnPublisher_Click(object sender, RoutedEventArgs e)
+        private void btnUser_Click(object sender, RoutedEventArgs e)
         {
-            
+            fContainer.Navigate(Users);           
         }
 
-        private void btnGenre_Click(object sender, RoutedEventArgs e)
+        private void btnProduct_Click(object sender, RoutedEventArgs e)
         {
-            
+            fContainer.Navigate(Products);            
         }
 
         private void btnCategory_Click(object sender, RoutedEventArgs e)
         {
-            
+            fContainer.Navigate(Categories);
         }
 
-        private void btnBooks_Click(object sender, RoutedEventArgs e)
+        private void btnCustomer_Click(object sender, RoutedEventArgs e)
         {
-            
+            fContainer.Navigate(Customers);            
         }
 
-        private void btnInventory_Click(object sender, RoutedEventArgs e)
+        private void btnGiftCard_Click(object sender, RoutedEventArgs e)
         {
-                      
+            fContainer.Navigate(GiftCards);            
         }
 
-        private void btnLibrarian_Click(object sender, RoutedEventArgs e)
+        private void btnTransaction_Click(object sender, RoutedEventArgs e)
         {
-            
+            fContainer.Navigate(Transactions);
         }
 
-        private void btnReturnBook_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }    
         private void btnReport_Click(object sender, RoutedEventArgs e)
-        {            
-
+        {
+            fContainer.Navigate(Reports);
+        }    
+        private void btnLogs_Click(object sender, RoutedEventArgs e)
+        {
+            fContainer.Navigate(Logs);
         }        
        
     }

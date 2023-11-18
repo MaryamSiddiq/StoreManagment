@@ -2,6 +2,15 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:WPFModernVerticalMenu.Styles">
 
+    <Style x:Key="CenteredHeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+    </Style>
+    
+    <Style x:Key="CenteredRowHeaderStyle" TargetType="{x:Type DataGridRowHeader}">
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
     <!-- Start: Pop-up Button Style -->
     <Style x:Key="PopupButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="Transparent"/>
@@ -127,7 +136,4 @@
         <Setter Property="FontSize" Value="16"/>
         <!-- Add more setters to customize the TextBox appearance as needed -->
     </Style>
-
-
-
 </ResourceDictionary>

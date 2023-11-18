@@ -28,6 +28,7 @@ namespace StoreMS
         {
             
             InitializeComponent();
+            CBRole.Focus();
             List<ReceiptItem> items = new List<ReceiptItem>
             {
                 new ReceiptItem { Name = "Item 1", Price = 25.00M },

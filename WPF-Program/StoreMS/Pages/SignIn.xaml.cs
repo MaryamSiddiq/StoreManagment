@@ -63,8 +63,8 @@ namespace StoreMS.Pages
             }
             else if (user == "Cashier")
             {
-                UserHP userHP = new UserHP();
-                userHP.ShowDialog();
+                CashierHP CashierHP = new CashierHP();
+                CashierHP.ShowDialog();
             }
             
         }

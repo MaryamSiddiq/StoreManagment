@@ -20,7 +20,7 @@
             </Grid.ColumnDefinitions>
 
             <Border Grid.Column="0"
-                    Background="{DynamicResource TertiaryBackgroundColor}"
+                    Background="{DynamicResource SecundaryBackgroundColor}"
                     CornerRadius="18 0 0 18">
                 <Grid x:Name="GridNav" Width="60">
                     <Grid.RowDefinitions>
@@ -38,21 +38,18 @@
                             </Border.Background>
                         </Border>
 
-                        <Label Content="Store"
-                               Foreground="{DynamicResource PrimaryTextColor}"
+                        <Label Content="Store"                               
                                FontWeight="Bold"
                                FontSize="16"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
                                Margin="60 -10 0 0" RenderTransformOrigin="0.5,0"/>
-                        <Label Content="Management"
-                               Foreground="{DynamicResource PrimaryTextColor}"
+                        <Label Content="Management"                               
                                FontWeight="Bold"
                                FontSize="16"
                                VerticalAlignment="Center"
                                Margin="60,22,0,0" RenderTransformOrigin="0.5,0"/>
-                        <Label Content="System"
-                               Foreground="{DynamicResource PrimaryTextColor}"
+                        <Label Content="System"                               
                                FontWeight="Bold"
                                FontSize="16"
                                VerticalAlignment="Center"
@@ -61,32 +58,29 @@
 
                     <!-- Start: MenuItem -->
                     <StackPanel Grid.Row="1" Margin="-1 0 0 20">
-                        <Button x:Name="btnAuthor" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnAuthor_MouseEnter" MouseLeave="btnAuthor_MouseLeave" Click="btnAuthor_Click">
-                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource students}" IconWidth="16" Text="Authors" VerticalAlignment="Center"/>
+                        <Button x:Name="btnDashboard" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnDashboard_MouseEnter" MouseLeave="btnDashboard_MouseLeave" Click="btnDashboard_Click">
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource TertiaryBackgroundColor}" Icon="{DynamicResource Dashboard}" IconWidth="16" Text="Dashboard" VerticalAlignment="Center"/>
                         </Button>
-                        <Button x:Name="btnPublisher" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnPublisher_MouseEnter" MouseLeave="btnPublisher_MouseLeave" Click="btnPublisher_Click">
-                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource advisors}" IconWidth="16" Text="Publisher" VerticalAlignment="Center"/>
+                        <Button x:Name="btnUser" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnUser_MouseEnter" MouseLeave="btnUser_MouseLeave" Click="btnUser_Click">
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource TertiaryBackgroundColor}" Icon="{DynamicResource Users}" IconWidth="16" Text="Users" VerticalAlignment="Center"/>
                         </Button>
-                        <Button x:Name="btnGenre" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnGenre_MouseEnter" MouseLeave="btnGenre_MouseLeave" Click="btnGenre_Click">
-                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource projects}" IconWidth="16" Text="Genres" VerticalAlignment="Center"/>
+                        <Button x:Name="btnProduct" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnProduct_MouseEnter" MouseLeave="btnProduct_MouseLeave" Click="btnProduct_Click">
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource TertiaryBackgroundColor}" Icon="{DynamicResource Products}" IconWidth="16" Text="Products" VerticalAlignment="Center"/>
                         </Button>
-                        <Button x:Name="btnCategory" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnCategory_MouseEnter" MouseLeave="btnCategory_MouseLeave" Click="btnCategory_Click">
-                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource groups}" IconWidth="16" Text="Categories" VerticalAlignment="Center"/>
+                        <Button x:Name="btnCustomer" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnCustomer_MouseEnter" MouseLeave="btnCustomer_MouseLeave" Click="btnCustomer_Click">
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource TertiaryBackgroundColor}" Icon="{DynamicResource Customers}" IconWidth="16" Text="Customers" VerticalAlignment="Center"/>
                         </Button>
-                        <Button x:Name="btnBooks" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnBooks_MouseEnter" MouseLeave="btnBooks_MouseLeave" Click="btnBooks_Click">
-                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource Sgroups}" IconWidth="16" Text="Books" VerticalAlignment="Center"/>
+                        <Button x:Name="btnGiftCard" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnGiftCard_MouseEnter" MouseLeave="btnGiftCard_MouseLeave" Click="btnGiftCard_Click">
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource TertiaryBackgroundColor}" Icon="{DynamicResource GiftCard}" IconWidth="16" Text="Gift Cards" VerticalAlignment="Center"/>
                         </Button>
-                        <Button x:Name="btnInventory" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnInventory_MouseEnter" MouseLeave="btnInventory_MouseLeave" Click="btnInventory_Click">
-                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource assignProjects}" IconWidth="16" Text="Inventory" VerticalAlignment="Center"/>
-                        </Button>
-                        <Button x:Name="btnLibrarian" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnLibrarian_MouseEnter" MouseLeave="btnLibrarian_MouseLeave" Click="btnLibrarian_Click">
-                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource addAdvisors}" IconWidth="16" Text="Librarian" VerticalAlignment="Center"/>
-                        </Button>
-                        <Button x:Name="btnReturnBook" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnReturnBook_MouseEnter" MouseLeave="btnReturnBook_MouseLeave" Click="btnReturnBook_Click">
-                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource evaluations}" IconWidth="16" Text="Return Books" VerticalAlignment="Center"/>
+                        <Button x:Name="btnTransaction" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnTransaction_MouseEnter" MouseLeave="btnTransaction_MouseLeave" Click="btnTransaction_Click">
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource TertiaryBackgroundColor}" Icon="{DynamicResource Transaction}" IconWidth="16" Text="Transactions" VerticalAlignment="Center"/>
                         </Button>
                         <Button x:Name="btnReport" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnReport_MouseEnter" MouseLeave="btnReport_MouseLeave" Click="btnReport_Click">
-                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource Report}" IconWidth="16" Text="Reports" VerticalAlignment="Center"/>
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource TertiaryBackgroundColor}" Icon="{DynamicResource Report}" IconWidth="16" Text="Reports" VerticalAlignment="Center"/>
+                        </Button>
+                        <Button x:Name="btnLogs" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnLogs_MouseEnter" MouseLeave="btnLogs_MouseLeave" Click="btnLogs_Click">
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource TertiaryBackgroundColor}" Icon="{DynamicResource Log}" IconWidth="16" Text="Logs" VerticalAlignment="Center"/>
                         </Button>
                     </StackPanel>
                     <!-- End: MenuItem -->

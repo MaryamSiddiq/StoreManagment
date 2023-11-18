@@ -80,17 +80,11 @@
                                 </Border>
                                 <Border x:Name="btnSignIn" 
                                     Background="{DynamicResource PrimaryBackgroundColor}" 
-                                    CornerRadius="5" 
-                                    Padding="5,5" 
-                                    HorizontalAlignment="Center"
-                                    Margin="0, 270,0,0"  
-                                    Width="450" 
-                                    Height="40"
-                                    VerticalAlignment="Top" 
+                                    CornerRadius="5" Padding="5,5" 
+                                    HorizontalAlignment="Center" VerticalAlignment="Top" 
+                                    Margin="0, 270,0,0"  Width="450" Height="40"                                    
                                     Cursor="Hand"
-                                    MouseDown="btnSignIn_MouseDown" 
-                                    MouseEnter="btnSignIn_MouseEnter" 
-                                    MouseLeave="btnSignIn_MouseLeave">
+                                    MouseDown="btnSignIn_MouseDown" MouseEnter="btnSignIn_MouseEnter" MouseLeave="btnSignIn_MouseLeave">
                                     <Grid>
                                         <TextBlock x:Name="txtSignIn" Text="SIGN IN"
                                             FontFamily="Montserrat"

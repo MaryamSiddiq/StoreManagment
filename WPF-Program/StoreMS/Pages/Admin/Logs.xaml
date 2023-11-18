@@ -1,0 +1,41 @@
+﻿<Page x:Class="StoreMS.Pages.Admin.Logs"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:StoreMS"
+      mc:Ignorable="d"
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="Logs">
+    <Border Background="{DynamicResource SecundaryBackgroundColor}" CornerRadius="12">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Title Label -->
+            <Label Grid.Row="0" Content="LOGS"
+                   FontSize="40" FontWeight="Bold" FontFamily="Montserrat"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+            <!-- DataGrid for Logs -->
+            <DataGrid Grid.Row="2"
+                      x:Name="logsDataGrid"
+                      AutoGenerateColumns="False"
+                      Margin="5"
+                      BorderBrush="{DynamicResource TextFourthColor}"
+                      FontSize="16">
+                <!-- Column Definitions -->
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Class Name" Binding="{Binding ClassName}" Width="*" />
+                    <DataGridTextColumn Header="Function Name" Binding="{Binding FunctionName}" Width="*" />
+                    <DataGridTextColumn Header="Error Message" Binding="{Binding ErrorMessage}" Width="*" />
+                    <DataGridTextColumn Header="Log Date" Binding="{Binding LogDate}" Width="*" />
+                    <!-- Additional Columns for Logs can be added here -->
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Border>
+</Page>
