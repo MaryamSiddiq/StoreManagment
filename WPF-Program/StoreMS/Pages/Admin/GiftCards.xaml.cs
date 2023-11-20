@@ -65,7 +65,9 @@ namespace StoreMS.Pages.Admin
             if (string.IsNullOrWhiteSpace(textBox.Text))
             {
                 textBox.Text = text;
-            }            
+            }
+            if (txtGiftCardSearch.Text.Length <= 0)
+                txtGiftCardSearch.Text = "Search Here...";
         }
         private void btnGenerateCards_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -133,7 +135,38 @@ namespace StoreMS.Pages.Admin
             // This is just a placeholder, you might want to use a more sophisticated algorithm
             Random random = new Random();
             return random.Next(10, 1000);
-        }        
+        }
+
+        private void txtGiftCardSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                // Get the search text from the TextBox
+                string searchText = txtGiftCardSearch.Text;
+
+                // Implement your search logic using LINQ to filter your data source based on searchText
+                if (!string.IsNullOrWhiteSpace(searchText) && searchText != "Search Here...")
+                {
+                    var filteredData = giftCards.Where(card =>
+                        card.CardCode != null && card.CardCode.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                        card.Balance.ToString().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0 || // Convert to string before checking
+                        card.IsActive.ToString().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0
+                    ).ToList();
+
+                    // Update the DataGrid with the filtered data
+                    giftCardDataGrid.ItemsSource = filteredData;
+                }
+                else if (giftCardDataGrid != null)
+                {
+                    // If the search text is empty, reset the DataGrid to the original data source
+                    giftCardDataGrid.ItemsSource = giftCards;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions here or add logging as needed
+            }
+        }
     }
 
     public class GiftCardData

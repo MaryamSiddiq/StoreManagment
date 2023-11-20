@@ -46,7 +46,39 @@ namespace StoreMS.Pages.Admin
             {
                 textBox.Text = text;
             }
-        }        
+        }
+
+        private void txtLogsSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                // Get the search text from the TextBox
+                string searchText = txtLogsSearch.Text;
+
+                // Implement your search logic using LINQ to filter your data source based on searchText
+                if (!string.IsNullOrWhiteSpace(searchText) && searchText != "Search Here...")
+                {
+                    var filteredData = logs.Where(log =>
+                        (log.ClassName != null && log.ClassName.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                        (log.FunctionName != null && log.FunctionName.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                        (log.ErrorMessage != null && log.ErrorMessage.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                        log.LogDate.ToString().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0 // Convert to string before checking
+                    ).ToList();
+
+                    // Update the DataGrid with the filtered data
+                    logsDataGrid.ItemsSource = filteredData;
+                }
+                else if (logsDataGrid != null)
+                {
+                    // If the search text is empty, reset the DataGrid to the original data source
+                    logsDataGrid.ItemsSource = logs;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions here or add logging as needed
+            }
+        }
     }
 
     public class LogData

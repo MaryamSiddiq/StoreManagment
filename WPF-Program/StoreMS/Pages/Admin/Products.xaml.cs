@@ -64,6 +64,8 @@ namespace StoreMS.Pages.Admin
             {
                 textBox.Text = text;
             }
+            if (txtProductSearch.Text.Length <=0 )
+                txtProductSearch.Text = "Search Here...";
         }
 
         private void EditProductButton_Click(object sender, RoutedEventArgs e)
@@ -116,7 +118,40 @@ namespace StoreMS.Pages.Admin
                 txtAdd.Foreground = (Brush)FindResource("TextSecundaryColor");
                 txtAdd2.Foreground = (Brush)FindResource("TextSecundaryColor");
             }
-        }       
+        }
+
+        private void txtProductSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                // Get the search text from the TextBox
+                string searchText = txtProductSearch.Text;
+
+                // Implement your search logic using LINQ to filter your data source based on searchText
+                if (!string.IsNullOrWhiteSpace(searchText) && searchText != "Search Here...")
+                {
+                    var filteredData = products.Where(item =>
+                        (item.ProductName != null && item.ProductName.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                        (item.Description != null && item.Description.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                        item.Price.ToString().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0 || // Convert to string before checking
+                        (item.Category != null && item.Category.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                    ).ToList();
+
+
+                    // Update the DataGrid with the filtered data
+                    productDataGrid.ItemsSource = filteredData;
+                }
+                else if (productDataGrid != null)
+                {
+                    // If the search text is empty, reset the DataGrid to the original data source
+                    productDataGrid.ItemsSource = products;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions here or add logging as needed
+            }
+        }
     }
 }
 

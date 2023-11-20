@@ -66,6 +66,7 @@ namespace StoreMS.Pages.Admin
             {
                 textBox.Text = text;
             }
+            txtSearch.Text = "Search Here...";
         }
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
@@ -124,7 +125,39 @@ namespace StoreMS.Pages.Admin
         private void CBRole_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-        }        
+        }
+
+        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                // Get the search text from the TextBox
+                string searchText = txtSearch.Text;
+
+                // Implement your search logic using LINQ to filter your data source based on searchText
+                if (!string.IsNullOrWhiteSpace(searchText) && searchText != "Search Here...")
+                {
+                    var filteredData = users.Where(item =>
+                        (item.Name != null && item.Name.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                        (item.Username != null && item.Username.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                        (item.Role != null && item.Role.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                    ).ToList();
+
+                    // Update the DataGrid with the filtered data
+                    userDataGrid.ItemsSource = filteredData;
+                }
+                else if (userDataGrid != null)
+                {
+                    // If the search text is empty, reset the DataGrid to the original data source
+                    userDataGrid.ItemsSource = users;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions here or add logging as needed
+            }
+        }
+
     }
 }
 

@@ -89,7 +89,9 @@ namespace StoreMS.Pages.Admin
             if (string.IsNullOrWhiteSpace(textBox.Text))
             {
                 textBox.Text = text;
-            }            
+            }
+            if (txtCustomerSearch.Text.Length <= 0)
+                txtCustomerSearch.Text = "Search Here...";
         }        
         private void EditCustomerButton_Click(object sender, RoutedEventArgs e)
         {
@@ -115,7 +117,38 @@ namespace StoreMS.Pages.Admin
         {
             // Implement your logic to delete the selected customer
             // You may want to show a confirmation dialog before deleting
-        }        
+        }
+        
+        private void txtCustomerSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                // Get the search text from the TextBox
+                string searchText = txtCustomerSearch.Text;
+
+                // Implement your search logic using LINQ to filter your data source based on searchText
+                if (!string.IsNullOrWhiteSpace(searchText) && searchText != "Search Here...")
+                {
+                    var filteredData = customers.Where(customer =>
+                        (customer.Name != null && customer.Name.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                        (customer.Email != null && customer.Email.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                        customer.LoyaltyPoints.ToString().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0
+                    ).ToList();
+
+                    // Update the DataGrid with the filtered data
+                    customerDataGrid.ItemsSource = filteredData;
+                }
+                else if (customerDataGrid != null)
+                {
+                    // If the search text is empty, reset the DataGrid to the original data source
+                    customerDataGrid.ItemsSource = customers;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions here or add logging as needed
+            }
+        }
     }
 
     public class CustomerData

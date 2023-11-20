@@ -12,6 +12,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="60" />
+                <RowDefinition Height="40" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
@@ -19,6 +20,26 @@
             <Label Grid.Row="0" Content="LOGS"
                    FontSize="40" FontWeight="Bold" FontFamily="Montserrat"
                    HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+            <!-- Search TextBox -->
+            <Border Grid.Row="1"
+                    Background="{DynamicResource PrimaryBackgroundColor}"
+                    CornerRadius="14"
+                    Margin="20,10,10,0"
+                    Width="250"
+                    Height="30"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Padding="10 4 0 0">
+                <TextBox x:Name="txtLogsSearch"
+                         Style="{StaticResource CustomTextBoxStyle}"
+                         HorizontalAlignment="Stretch"
+                         VerticalAlignment="Stretch"
+                         Text="Search Here..."
+                         GotFocus="txtLabelPlace_GotFocus"
+                         LostFocus="txtLabelPlace_LostFocus"
+                         TextChanged="txtLogsSearch_TextChanged"/>
+            </Border>
 
             <!-- DataGrid for Logs -->
             <DataGrid Grid.Row="2"
