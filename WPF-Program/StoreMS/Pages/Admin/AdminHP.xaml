@@ -67,6 +67,9 @@
                         <Button x:Name="btnProduct" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnProduct_MouseEnter" MouseLeave="btnProduct_MouseLeave" Click="btnProduct_Click">
                             <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource TertiaryBackgroundColor}" Icon="{DynamicResource Products}" IconWidth="16" Text="Products" VerticalAlignment="Center"/>
                         </Button>
+                        <Button x:Name="btnCategory" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnCategory_MouseEnter" MouseLeave="btnCategory_MouseLeave" Click="btnCategory_Click">
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource TertiaryBackgroundColor}" Icon="{DynamicResource Category}" IconWidth="16" Text="Product Categories" VerticalAlignment="Center"/>
+                        </Button>
                         <Button x:Name="btnCustomer" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnCustomer_MouseEnter" MouseLeave="btnCustomer_MouseLeave" Click="btnCustomer_Click">
                             <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource TertiaryBackgroundColor}" Icon="{DynamicResource Customers}" IconWidth="16" Text="Customers" VerticalAlignment="Center"/>
                         </Button>
