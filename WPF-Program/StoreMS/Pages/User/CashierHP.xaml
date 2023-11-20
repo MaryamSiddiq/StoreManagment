@@ -61,6 +61,9 @@
                         <Button x:Name="btnPOS" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnPOS_MouseEnter" MouseLeave="btnPOS_MouseLeave" Click="btnPOS_Click">
                             <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource POS}" IconWidth="16" Text="Point of Sale" VerticalAlignment="Center"/>
                         </Button>
+                        <Button x:Name="btnInventory" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnInventory_MouseEnter" MouseLeave="btnInventory_MouseLeave" Click="btnInventory_Click">
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource Inventory}" IconWidth="16" Text="Inventory" VerticalAlignment="Center"/>
+                        </Button>
                         <Button x:Name="btnAccount" Style="{DynamicResource PopupButtonStyle}"  MouseEnter="btnAccount_MouseEnter" MouseLeave="btnAccount_MouseLeave" Click="btnAccount_Click">
                             <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource AccountInfo}" IconWidth="16" Text="Account Info" VerticalAlignment="Center"/>
                         </Button>

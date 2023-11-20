@@ -56,6 +56,23 @@ namespace StoreMS
             Popup.IsOpen = false;
         }
 
+        private void btnInventory_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (Tg_Btn.IsChecked == false)
+            {
+                Popup.PlacementTarget = btnInventory;
+                Popup.Placement = PlacementMode.Right;
+                Popup.IsOpen = true;
+                Header.PopupText.Text = "Inventory";
+            }
+        }
+
+        private void btnInventory_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Popup.Visibility = Visibility.Collapsed;
+            Popup.IsOpen = false;
+        }
+
         private void btnAccount_MouseEnter(object sender, MouseEventArgs e)
         {
             if (Tg_Btn.IsChecked == false)
