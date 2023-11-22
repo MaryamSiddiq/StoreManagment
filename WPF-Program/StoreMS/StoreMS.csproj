@@ -206,6 +206,9 @@
     <Compile Include="CustomGridView.xaml.cs">
       <DependentUpon>CustomGridView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Admin\Categories.xaml.cs">
+      <DependentUpon>Categories.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Admin\Customers.xaml.cs">
       <DependentUpon>Customers.xaml</DependentUpon>
     </Compile>
@@ -233,6 +236,9 @@
     <Compile Include="Pages\User\Account.xaml.cs">
       <DependentUpon>Account.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\User\Inventory.xaml.cs">
+      <DependentUpon>Inventory.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\User\POS.xaml.cs">
       <DependentUpon>POS.xaml</DependentUpon>
     </Compile>
@@ -258,6 +264,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomGridView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\Categories.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -294,6 +304,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\User\Account.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\User\Inventory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
