@@ -94,16 +94,13 @@
 
                 <!-- Category ComboBox -->
                 <ComboBox Grid.Column="1"
-                          x:Name="CBCategory"
-                          SelectedIndex="0" FontSize="16"
-                          BorderBrush="White" Background="White"
-                          HorizontalAlignment="Stretch" VerticalAlignment="Top" Cursor="Hand"
-                          Width="Auto" Height="35" Margin="20,55,20,0"
-                          VerticalContentAlignment="Center">
+                            x:Name="CBCategory"
+                            SelectedIndex="0" FontSize="16"
+                            BorderBrush="White" Background="White"
+                            HorizontalAlignment="Stretch" VerticalAlignment="Top" Cursor="Hand"
+                            Width="Auto" Height="35" Margin="20,55,20,0"
+                            VerticalContentAlignment="Center">
                     <ComboBoxItem IsEnabled="False" Content="Select the Category" />
-                    <ComboBoxItem Content="Electronics" />
-                    <ComboBoxItem Content="Clothing" />
-                    <!-- Add more categories as needed -->
                 </ComboBox>
 
                 <!-- Add Product Button -->

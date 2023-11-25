@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Media; // Add this for Brush
 
 namespace StoreMS.Pages.Admin
 {
@@ -20,28 +15,187 @@ namespace StoreMS.Pages.Admin
     /// </summary>
     public partial class Users : Page
     {
+        
+        private string ConnectionString = @"Data Source=(local);Initial Catalog=StoreMS;Integrated Security=True";
         List<UserData> users = new List<UserData>();
         public Users()
         {
             InitializeComponent();
-
-            users = new List<UserData>
-            {
-                new UserData { Name = "John Doe", Username = "johndoe", Role = "Admin", IsActive = true },
-                new UserData { Name = "Jane Smith", Username = "janesmith", Role = "User", IsActive = false },
-                new UserData { Name = "Bob Johnson", Username = "bobjohnson", Role = "User", IsActive = true }
-                // Add more user data as needed
-            };
-
-            // Sort the users by IsActive (true first) and then by Name
-            users = users
-                .OrderByDescending(user => user.IsActive)
-                .ThenBy(user => user.Role)
-                .ThenBy(user => user.Name)
-                .ToList();
-
-            userDataGrid.ItemsSource = users; 
+            LoadUserData();
         }
+
+        private void LoadUserData()
+        {            
+            userDataGrid.ItemsSource = null;            
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("SELECT * FROM [User]", connection))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            users.Add(new UserData
+                            {
+                                Name = row["Name"].ToString(),
+                                Username = row["Username"].ToString(),
+                                Role = row["Role"].ToString(),
+                                IsActive = Convert.ToBoolean(row["IsActive"]),
+                                CreatedAt = Convert.ToDateTime(row["CreatedAt"]),
+                                UpdatedAt = Convert.ToDateTime(row["UpdatedAt"])
+                            });
+                        }
+                    }
+                }
+                connection.Close();
+            }
+
+            userDataGrid.ItemsSource = users;
+            userDataGrid.Items.Refresh();
+        }
+
+        private void DeleteUser(string username)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    // Now you can safely delete the user
+                    string deleteUserQuery = "DELETE FROM [User] WHERE Username = @Username";
+                    using (SqlCommand deleteUserCommand = new SqlCommand(deleteUserQuery, connection))
+                    {
+                        deleteUserCommand.Parameters.AddWithValue("@Username", username);
+                        deleteUserCommand.ExecuteNonQuery();
+                    }
+                    connection.Close();
+                }                
+                MessageBox.Show("User Deleted Successfully!");                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+
+        private void AddUser(string name, string username, string role, bool isActive)
+        {
+            // Check if the username already exists
+            if (IsUsernameExists(username))
+            {
+                MessageBox.Show("Username already exists. Please choose a different username.");
+                return;
+            }
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("INSERT INTO [User] (Name, Username, Role, IsActive, CreatedAt, UpdatedAt) VALUES (@Name, @Username, @Role, @IsActive, GETDATE(), GETDATE())", connection))
+                {
+                    command.Parameters.AddWithValue("@Name", name);
+                    command.Parameters.AddWithValue("@Username", username);
+                    command.Parameters.AddWithValue("@Role", role);
+                    command.Parameters.AddWithValue("@IsActive", isActive);
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
+            MessageBox.Show("User Added Successfully!");
+        }
+
+        private bool IsUsernameExists(string username)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("SELECT COUNT(*) FROM [User] WHERE Username = @Username", connection))
+                {
+                    command.Parameters.AddWithValue("@Username", username);
+                    int count = (int)command.ExecuteScalar();
+
+                    // If count is greater than 0, it means the username already exists
+                    return count > 0;
+                }
+            }
+        }
+
+
+        private void UpdateUser(string username, string name, string role, bool isActive)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("UPDATE [User] SET Name = @Name, Role = @Role, IsActive = @IsActive, UpdatedAt = GETDATE() WHERE Username = @Username", connection))
+                {
+                    command.Parameters.AddWithValue("@Name", name);
+                    command.Parameters.AddWithValue("@Username", username);
+                    command.Parameters.AddWithValue("@Role", role);
+                    command.Parameters.AddWithValue("@IsActive", isActive);
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
+            MessageBox.Show("User Updated Successfully!");
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (userDataGrid.SelectedItem != null)
+            {
+                var selectedItem = (UserData)userDataGrid.SelectedItem;
+                DeleteUser(selectedItem.Username);
+            }
+            else
+            {
+                MessageBox.Show("Please select an item to delete.");
+            }
+            ReloadPage();
+        }
+
+        private void btnAddUser_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            // Assuming you have fields to input the new user information
+            string newName = txtName.Text; // Replace with your actual value
+            string newUsername = txtUsername.Text; // Replace with your actual value
+            string newRole = "Admin";
+            if (CBRole.SelectedIndex == 2)
+                newRole = "Cashier"; // Replace with your actual value
+            bool newIsActive = true; // Replace with your actual value
+
+            AddUser(newName, newUsername, newRole, newIsActive);
+            ReloadPage();
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (userDataGrid.SelectedItem != null)
+            {
+                var selectedItem = (UserData)userDataGrid.SelectedItem;
+
+                // Open the EditUserWindow and pass the selected user for editing
+                EditUserWindow editUserWindow = new EditUserWindow(selectedItem);
+                editUserWindow.ShowDialog();
+
+                // Call UpdateUser if the user confirmed the changes
+                UpdateUser(selectedItem.Username, selectedItem.Name, selectedItem.Role, selectedItem.IsActive);
+            }
+            else
+            {
+                MessageBox.Show("Please select an item to edit.");
+            }
+            ReloadPage();
+        }
+
 
         string text = null;
         private void txtLabelPlace_GotFocus(object sender, RoutedEventArgs e)
@@ -68,33 +222,39 @@ namespace StoreMS.Pages.Admin
             }
             txtSearch.Text = "Search Here...";
         }
-        private void EditButton_Click(object sender, RoutedEventArgs e)
+
+        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            // Check if an item is selected in the DataGrid
-            if (userDataGrid.SelectedItem != null)
+            try
             {
-                // Get the selected item (assuming your data source is a collection of objects)
-                var selectedItem = (UserData)userDataGrid.SelectedItem;
-                MessageBox.Show(selectedItem.Name);
-                // Implement your edit logic here. For example, open a dialog to edit the selected item.
-                // You can pass the selectedItem to the dialog for editing.
+                // Get the search text from the TextBox
+                string searchText = txtSearch.Text;
 
-                // After editing, you may need to refresh the DataGrid to reflect the changes.
-                // You can do this by reassigning the data source or manually updating the selected item in the DataGrid.
+                // Implement your search logic using LINQ to filter your data source based on searchText
+                if (!string.IsNullOrWhiteSpace(searchText) && searchText != "Search Here...")
+                {
+                    var filteredData = users
+                        .Where(item =>
+                            (item.Name != null && item.Name.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                            (item.Username != null && item.Username.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                            (item.Role != null && item.Role.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                        )
+                        .ToList();
+
+                    // Update the DataGrid with the filtered data
+                    userDataGrid.ItemsSource = filteredData;
+                }
+                else if (userDataGrid != null)
+                {
+                    // If the search text is empty, reset the DataGrid to the original data source
+                    userDataGrid.ItemsSource = users;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Please select an item to edit.");
+                // Handle any exceptions here or add logging as needed
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-        }
-
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void btnAddUser_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
         }
 
         private void btnAddUser_MouseEnter(object sender, MouseEventArgs e)
@@ -116,55 +276,13 @@ namespace StoreMS.Pages.Admin
                 txtSignIn.Foreground = (Brush)FindResource("TextSecundaryColor");
             }
         }
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void ReloadPage()
         {
+            // Create a new instance of the Users page
+            Users usersPage = new Users();
 
-        }
-
-        private void CBRole_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            try
-            {
-                // Get the search text from the TextBox
-                string searchText = txtSearch.Text;
-
-                // Implement your search logic using LINQ to filter your data source based on searchText
-                if (!string.IsNullOrWhiteSpace(searchText) && searchText != "Search Here...")
-                {
-                    var filteredData = users.Where(item =>
-                        (item.Name != null && item.Name.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0) ||
-                        (item.Username != null && item.Username.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0) ||
-                        (item.Role != null && item.Role.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
-                    ).ToList();
-
-                    // Update the DataGrid with the filtered data
-                    userDataGrid.ItemsSource = filteredData;
-                }
-                else if (userDataGrid != null)
-                {
-                    // If the search text is empty, reset the DataGrid to the original data source
-                    userDataGrid.ItemsSource = users;
-                }
-            }
-            catch (Exception ex)
-            {
-                // Handle any exceptions here or add logging as needed
-            }
-        }
-
+            // Navigate to the new instance of the Users page
+            this.NavigationService.Navigate(usersPage);
+        }        
     }
-}
-
-public class UserData
-{
-    public string Name { get; set; }
-    public string Username { get; set; }
-    public string Role { get; set; }
-    public bool IsActive { get; set; }
 }

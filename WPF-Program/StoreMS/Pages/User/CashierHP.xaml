@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StoreMS"
         mc:Ignorable="d" Name="home"
-        Title="User Home Page" Height="650" Width="1000"
+        Title="User Home Page" Height="750" Width="1200"
         WindowStartupLocation="CenterScreen" WindowStyle="None"
         Background="Transparent" AllowsTransparency="True"
         ResizeMode="NoResize" FontFamily="Poppins">

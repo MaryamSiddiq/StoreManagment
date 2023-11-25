@@ -13,6 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using StoreMS.Pages.Cashier;
+using StoreMS.Pages.Admin;
+using StoreMS.Pages.User;
 
 namespace StoreMS
 {
@@ -21,16 +24,16 @@ namespace StoreMS
     /// </summary>
     public partial class CashierHP : Window
     {
-        Uri POS;        
+        POS POS;        
         Uri Inventory;        
         Uri Account;        
 
         public CashierHP()
         {
             InitializeComponent();
-            POS = new Uri("Pages/User/POS.xaml", UriKind.RelativeOrAbsolute);
+            POS = new POS();
             Inventory = new Uri("Pages/User/Inventory.xaml", UriKind.RelativeOrAbsolute);
-            Account = new Uri("Pages/User/Account.xaml", UriKind.RelativeOrAbsolute);            
+            Account = new Uri("Pages/User/Account.xaml", UriKind.RelativeOrAbsolute);
         }
 
         private void BG_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -12,28 +12,176 @@ namespace StoreMS.Pages.Admin
 {
     public partial class Categories : Page
     {
+        private string ConnectionString = @"Data Source=(local);Initial Catalog=StoreMS;Integrated Security=True";
         List<CategoryData> categories = new List<CategoryData>();
-        string text = null;
 
         public Categories()
         {
             InitializeComponent();
-
-            categories = new List<CategoryData>
-            {
-                new CategoryData { CategoryName = "Electronics" },
-                new CategoryData { CategoryName = "Clothing" },
-                // Add more category data as needed
-            };
-
-            // Sort the categories by CategoryName
-            categories = categories
-                .OrderBy(category => category.CategoryName)
-                .ToList();
-
-            categoryDataGrid.ItemsSource = categories;
+            LoadCategoryData();
         }
 
+        private void LoadCategoryData()
+        {
+            categoryDataGrid.ItemsSource = null;
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("SELECT * FROM [Category]", connection))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            categories.Add(new CategoryData
+                            {
+                                CategoryName = row["Name"].ToString()
+                            });
+                        }
+                    }
+                }
+                connection.Close();
+            }
+
+            categoryDataGrid.ItemsSource = categories;
+            categoryDataGrid.Items.Refresh();
+        }
+
+        private void DeleteCategory(string categoryName)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                    string deleteCategoryQuery = "DELETE FROM [Category] WHERE Name = @Name";
+                    using (SqlCommand deleteCategoryCommand = new SqlCommand(deleteCategoryQuery, connection))
+                    {
+                        deleteCategoryCommand.Parameters.AddWithValue("@Name", categoryName);
+                        deleteCategoryCommand.ExecuteNonQuery();
+                    }
+                    connection.Close();
+                }
+                MessageBox.Show("Category Deleted Successfully!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void AddCategory(string categoryName)
+        {
+            // Check if the category already exists
+            if (IsCategoryExists(categoryName))
+            {
+                MessageBox.Show("Category already exists. Please choose a different category name.");
+                return;
+            }
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("INSERT INTO [Category] (Name) VALUES (@Name)", connection))
+                {
+                    command.Parameters.AddWithValue("@Name", categoryName);
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
+            MessageBox.Show("Category Added Successfully!");
+        }
+
+        private bool IsCategoryExists(string categoryName)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("SELECT COUNT(*) FROM [Category] WHERE Name = @Name", connection))
+                {
+                    command.Parameters.AddWithValue("@Name", categoryName);
+                    int count = (int)command.ExecuteScalar();
+
+                    // If count is greater than 0, it means the category already exists
+                    return count > 0;
+                }
+            }
+        }
+
+        private void UpdateCategory(string oldCategoryName, string newCategoryName)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("UPDATE [Category] SET Name = @NewName WHERE Name = @OldName", connection))
+                {
+                    command.Parameters.AddWithValue("@NewName", newCategoryName);
+                    command.Parameters.AddWithValue("@OldName", oldCategoryName);
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
+            MessageBox.Show("Category Updated Successfully!");
+        }
+
+        private void DeleteCategoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (categoryDataGrid.SelectedItem != null)
+            {
+                var selectedItem = (CategoryData)categoryDataGrid.SelectedItem;
+                DeleteCategory(selectedItem.CategoryName);
+            }
+            else
+            {
+                MessageBox.Show("Please select a category to delete.");
+            }
+            ReloadPage();
+        }
+
+        private void btnAddCategory_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            string newCategoryName = txtCategoryName.Text;
+            AddCategory(newCategoryName);
+            ReloadPage();
+        }
+
+        private void EditCategoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (categoryDataGrid.SelectedItem != null)
+            {
+                var selectedItem = (CategoryData)categoryDataGrid.SelectedItem;
+                var oldCategoryName = selectedItem.CategoryName;
+                // Open the EditCategoryWindow and pass the selected category for editing
+                EditCategoryWindow editCategoryWindow = new EditCategoryWindow(selectedItem);
+                editCategoryWindow.ShowDialog();
+
+                // Call UpdateCategory if the user confirmed the changes
+                UpdateCategory(oldCategoryName, selectedItem.CategoryName);
+            }
+            else
+            {
+                MessageBox.Show("Please select a category to edit.");
+            }
+            ReloadPage();
+        }
+
+        private void ReloadPage()
+        {
+            // Create a new instance of the Categories page
+            Categories categoriesPage = new Categories();
+
+            // Navigate to the new instance of the Categories page
+            this.NavigationService.Navigate(categoriesPage);
+        }
+        string text = null;
         private void txtLabelPlace_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
@@ -56,13 +204,7 @@ namespace StoreMS.Pages.Admin
             {
                 textBox.Text = text;
             }
-            if (txtCategorySearch.Text.Length <= 0)
-                txtCategorySearch.Text = "Search Here...";
-        }
-
-        private void btnAddCategory_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            // Implement your logic to add a new category
+            txtCategorySearch.Text = "Search Here...";
         }
 
         private void btnAddCategory_MouseEnter(object sender, MouseEventArgs e)
@@ -114,36 +256,6 @@ namespace StoreMS.Pages.Admin
             {
                 // Handle any exceptions here or add logging as needed
             }
-        }
-
-        private void EditCategoryButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Check if an item is selected in the DataGrid
-            if (categoryDataGrid.SelectedItem != null)
-            {
-                // Get the selected item (assuming your data source is a collection of objects)
-                var selectedItem = (CategoryData)categoryDataGrid.SelectedItem;
-                MessageBox.Show(selectedItem.CategoryName);
-                // Implement your edit logic here. For example, open a dialog to edit the selected item.
-                // You can pass the selectedItem to the dialog for editing.
-
-                // After editing, you may need to refresh the DataGrid to reflect the changes.
-                // You can do this by reassigning the data source or manually updating the selected item in the DataGrid.
-            }
-            else
-            {
-                MessageBox.Show("Please select a category to edit.");
-            }
-        }
-
-        private void DeleteCategoryButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Implement your logic to delete the selected category
-        }
-    }
-
-    public class CategoryData
-    {
-        public string CategoryName { get; set; }
+        }        
     }
 }

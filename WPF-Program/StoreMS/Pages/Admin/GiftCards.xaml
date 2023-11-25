@@ -33,7 +33,7 @@
                 <!-- Number of Cards TextBox -->
                 <Border Grid.Column="0" Grid.ColumnSpan="2"
                         Background="{DynamicResource PrimaryBackgroundColor}"
-                        CornerRadius="0" Margin="20,50,20,0" Width="Auto" Height="35"
+                        CornerRadius="0" Margin="20,25,20,0" Width="Auto" Height="35"
                         HorizontalAlignment="Stretch" VerticalAlignment="Top"
                         Padding="5 5 0 0">
                     <TextBox x:Name="txtNumberOfCards"
@@ -41,6 +41,19 @@
                              HorizontalAlignment="Stretch"
                              VerticalAlignment="Stretch"
                              Text="Enter the Number of Cards"
+                             GotFocus="txtLabelPlace_GotFocus"
+                             LostFocus="txtLabelPlace_LostFocus"/>
+                </Border>
+                <Border Grid.Column="0" Grid.ColumnSpan="2"
+                        Background="{DynamicResource PrimaryBackgroundColor}"
+                        CornerRadius="0" Margin="20,80,20,0" Width="Auto" Height="35"
+                        HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                        Padding="5 5 0 0">
+                    <TextBox x:Name="txtBalance"
+                             Style="{StaticResource CustomTextBoxStyle}"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Stretch"
+                             Text="Enter the Card Balance"
                              GotFocus="txtLabelPlace_GotFocus"
                              LostFocus="txtLabelPlace_LostFocus"/>
                 </Border>
@@ -114,7 +127,16 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Card Code" Binding="{Binding CardCode}" Width="*" />
                     <DataGridTextColumn Header="Balance" Binding="{Binding Balance}" Width="*" />
-                    <DataGridTextColumn Header="Is Active" Binding="{Binding IsActive}" Width="*" />
+                    <DataGridCheckBoxColumn Header="IsActive" Binding="{Binding IsActive}" Width="100" />
+                    <DataGridTemplateColumn Header="Actions" Width="100">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="Delete" Width="55" Click="DeleteButton_Click" Margin="8 1 0 1" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                     <!-- Additional Columns for Gift Cards can be added here -->
                 </DataGrid.Columns>
             </DataGrid>

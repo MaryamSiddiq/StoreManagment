@@ -45,8 +45,7 @@
                     Margin="20">
                 <charts:PieChart x:Name="salesByCategoryChart"
                                  Series="{Binding SalesByCategorySeries}"
-                                 LegendLocation="Right" DisableAnimations="True">
-                </charts:PieChart>
+                                 LegendLocation="Top" DisableAnimations="True"/>
             </Border>
         </Grid>
     </Border>

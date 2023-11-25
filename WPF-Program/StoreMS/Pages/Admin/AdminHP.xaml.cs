@@ -225,50 +225,58 @@ namespace StoreMS
             WindowState = WindowState.Minimized;
         }
         // End: Button Close | Restore | Minimize
-
         private void btnDashboard_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(Dashboard);
+            NavigateToPage(Dashboard);
         }
 
         private void btnUser_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(Users);           
+            NavigateToPage(Users);
         }
 
         private void btnProduct_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(Products);            
+            NavigateToPage(Products);
         }
 
         private void btnCategory_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(Categories);
+            NavigateToPage(Categories);
         }
 
         private void btnCustomer_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(Customers);            
+            NavigateToPage(Customers);
         }
 
         private void btnGiftCard_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(GiftCards);            
+            NavigateToPage(GiftCards);
         }
 
         private void btnTransaction_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(Transactions);
+            NavigateToPage(Transactions);
         }
 
         private void btnReport_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(Reports);
-        }    
+            NavigateToPage(Reports);
+        }
+
         private void btnLogs_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(Logs);
-        }        
-       
+            NavigateToPage(Logs);
+        }
+
+        private void NavigateToPage(Uri pageUri)
+        {
+            // Create a new frame each time you navigate
+            Frame newFrame = new Frame();
+            newFrame.Navigate(pageUri);
+            fContainer.Content = newFrame;
+        }
+
     }
 }

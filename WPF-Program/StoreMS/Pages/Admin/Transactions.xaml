@@ -19,10 +19,24 @@
             <Label Grid.Row="0" Content="Transactions"
                    FontSize="40" FontWeight="Bold" FontFamily="Montserrat"
                    HorizontalAlignment="Center" VerticalAlignment="Center" />
-            <Label Content="To be implemented"
-                   Grid.Row="1" Foreground="White" Margin="0 0 0 60"
-                   FontSize="60" FontWeight="Bold" FontFamily="Montserrat"
-                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <DataGrid Grid.Row="1"
+                  x:Name="DataGrid"
+                  AutoGenerateColumns="False"
+                  Margin="5"
+                  BorderBrush="{DynamicResource TextFourthColor}"
+                  FontSize="16">
+                <!-- Column Definitions -->
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Products" Binding="{Binding ProductsList}" Width="*" />
+                    <DataGridTextColumn Header="Customer Email" Binding="{Binding CustomerEmail}" Width="120" />
+                    <DataGridTextColumn Header="Total Amount" Binding="{Binding TotalAmount}" Width="130" />
+                    <DataGridTextColumn Header="GiftCard Discount" Binding="{Binding GiftCardDiscount}" Width="135" />
+                    <DataGridTextColumn Header="Loyalty Discount" Binding="{Binding LoyaltyDiscount}" Width="130" />
+                    <DataGridTextColumn Header="Paid Amount" Binding="{Binding PaidAmount}" Width="130" />
+                    <DataGridTextColumn Header="Date Time" Binding="{Binding DateTime}" Width="130" />
+                    <!-- Additional Columns for Items can be added here -->
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
     </Border>
 </Page>
