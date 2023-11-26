@@ -88,8 +88,17 @@
                          Margin="20,30,20,0" Width="Auto" Height="35"
                          GotFocus="txtLabelPlace_GotFocus"
                          LostFocus="txtLabelPlace_LostFocus" FontSize="16" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                         Padding="5 -1 0 0"                         />
-                    
+                         Padding="5 -1 0 0"
+                         KeyUp="txtItemName_KeyUp" PreviewKeyDown="txtItemName_PreviewKeyDown"/>
+
+                    <Popup Name="popupSuggestions" IsOpen="False" PlacementTarget="{Binding ElementName=txtItemName}" 
+                           Placement="Bottom" VerticalOffset="-7"
+                           HorizontalAlignment="Stretch" VerticalAlignment="Top" Width="{Binding ElementName=txtItemName, Path=ActualWidth}">
+
+                        <ListBox Name="listBoxSuggestions" Width="Auto" 
+                             Height="100" BorderBrush="Black" BorderThickness="1" Background="White"
+                             SelectionChanged="listBoxSuggestions_SelectionChanged" PreviewKeyDown="listBoxSuggestions_PreviewKeyDown"/>
+                    </Popup>
                 </Grid>
 
 

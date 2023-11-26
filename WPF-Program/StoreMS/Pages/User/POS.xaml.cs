@@ -53,7 +53,58 @@ namespace StoreMS.Pages.Cashier
             txtItemName.Text = "Search the Item Name";
             txtItemQuantity.Text = "Enter the Item Quantity";
         }
-        
+        private void txtItemName_KeyUp(object sender, KeyEventArgs e)
+        {
+            string filter = txtItemName.Text.ToLower();
+            List<string> filteredItems = products.FindAll(item => item.ToLower().Contains(filter));
+
+            listBoxSuggestions.ItemsSource = filteredItems;
+            popupSuggestions.IsOpen = filteredItems.Count > 0;
+
+            if (e.Key == Key.Down)
+            {
+                // Move focus to the ListBox when down arrow is pressed
+                listBoxSuggestions.Focus();
+                /*if (listBoxSuggestions.Items.Count > 0)
+                    listBoxSuggestions.SelectedIndex = 0;*/
+            }
+        }
+
+        private void listBoxSuggestions_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (listBoxSuggestions.SelectedIndex != -1)
+            {
+                txtItemName.Text = listBoxSuggestions.SelectedItem.ToString();
+                //popupSuggestions.IsOpen = false;
+            }
+        }
+
+        private void txtItemName_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                // Handle Enter key press
+                HandleEnterKeyPress();
+            }
+        }
+
+        private void listBoxSuggestions_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                // Handle Enter key press
+                HandleEnterKeyPress();
+            }
+        }
+
+        private void HandleEnterKeyPress()
+        {
+            if (listBoxSuggestions.SelectedIndex != -1)
+            {
+                txtItemName.Text = listBoxSuggestions.SelectedItem.ToString();
+                popupSuggestions.IsOpen = false;
+            }
+        }
         private void LoadProductNames()
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString))
@@ -378,7 +429,11 @@ namespace StoreMS.Pages.Cashier
 
                             txtCustomerName.Text = customerName;
                             // Assuming you have a txtLoyaltyPoints TextBox, update its text
-                            loyaltyDisc = loyaltyPoints;
+                            if (loyaltyPoints >= 2000)
+                            {
+                                loyaltyDisc = loyaltyPoints;
+                                UpdateLoyaltyPoints(customerEmail, loyaltyPoints, "Subtract");
+                            }
                             updatePriceLabels();
                         }
                         else
@@ -389,6 +444,33 @@ namespace StoreMS.Pages.Cashier
                 }
                 connection.Close();
             }
+        }
+        private bool UpdateLoyaltyPoints(string customerEmail, int newLoyaltyPoints, string action)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                string updateQuery = "UPDATE Customer SET LoyaltyPoints = LoyaltyPoints - @NewLoyaltyPoints WHERE Email = @Email";
+                if (action == "Add")
+                    updateQuery = "UPDATE Customer SET LoyaltyPoints = LoyaltyPoints + @NewLoyaltyPoints WHERE Email = @Email";
+
+                using (SqlCommand updateCommand = new SqlCommand(updateQuery, connection))
+                {
+                    updateCommand.Parameters.AddWithValue("@Email", customerEmail);
+                    updateCommand.Parameters.AddWithValue("@NewLoyaltyPoints", newLoyaltyPoints);
+
+                    int rowsAffected = updateCommand.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        // The update was successful
+                        return true;
+                    }
+                }
+                connection.Close();
+            }
+            return false;
         }
         private void btnConfirmOrder_MouseEnter(object sender, RoutedEventArgs e)
         {
@@ -432,7 +514,10 @@ namespace StoreMS.Pages.Cashier
 
                 // Insert transaction into the [Transaction] table
                 InsertTransaction(orderID, customerID <= 0 ? 0 : customerID , giftCardID <= 0 ? 0 : giftCardID, amount, loyaltyPoints);
-                
+
+                printReceipt(customerID <= 0 ? "N/A" : customerEmail);
+                // Reload or perform other actions after successful insertion
+                ReloadPage();
             }
             catch (Exception ex)
             {
@@ -571,6 +656,98 @@ namespace StoreMS.Pages.Cashier
             return productListBuilder.ToString().TrimEnd(';');
 
         }
-        
+
+        /// <summary>
+        /// /////////////// Printing Logic /////////////////////
+        /// </summary>
+        /// 
+
+        string receiptEmail = "N/A";
+        private void printReceipt(string customerEmail)
+        {
+            receiptEmail = "N/A";
+            receiptEmail = customerEmail;
+
+            // Create a PrintDocument instance
+            PrintDocument pd = new PrintDocument();
+
+            // Set the width to 300 and let the height be automatic
+            pd.DefaultPageSettings.PaperSize = new PaperSize("Custom", 300, 0);
+
+            // Hook up the PrintPage event
+            pd.PrintPage += new PrintPageEventHandler(PrintReceiptPage);
+
+            // Start printing
+            pd.Print();
+        }
+
+        private void PrintReceiptPage(object sender, PrintPageEventArgs e)
+        {
+            // Set the desired width and let the height be automatic
+            
+            // Define the drawing area for the receipt content
+            float x = e.MarginBounds.Left;
+            float y = e.MarginBounds.Top;
+
+            // Use a Graphics object to draw the content
+            using (Graphics g = e.Graphics)
+            {               
+                using (Font font = new Font("Arial", 12))
+                {
+                    // Draw each element of the receipt
+                    g.DrawString("                 The Daily Mart", new Font("Arial", 16), System.Drawing.Brushes.Black, x, y);
+                    y += 25;
+                    g.DrawString("       123 Main St. , Multan Road,", new Font("Arial", 16), System.Drawing.Brushes.Black, x, y);
+                    y += 25;
+                    g.DrawString("         Lahore, Pakistan, 54000", new Font("Arial", 16), System.Drawing.Brushes.Black, x, y);
+                    y += 25;
+                    g.DrawString("----------------------------------------------------", new Font("Arial", 16), System.Drawing.Brushes.Black, x, y);
+                    y += 25;
+
+                    g.DrawString("Customer Email: " + receiptEmail, new Font("Arial", 13), System.Drawing.Brushes.Black, x, y);
+                    y += 15;
+                    g.DrawString("----------------------------------------------------", new Font("Arial", 16), System.Drawing.Brushes.Black, x, y);
+                    y += 40;
+                    g.DrawString("Name", new Font("Arial", 13), System.Drawing.Brushes.Black, x, y);
+                    g.DrawString("Quantity", new Font("Arial", 13), System.Drawing.Brushes.Black, x + 205, y);
+                    g.DrawString("Price", new Font("Arial", 13), System.Drawing.Brushes.Black, x + 280, y);
+                    y += 30;
+                    foreach (var item in cartItems)
+                    {
+                        g.DrawString(item.ItemName, font, System.Drawing.Brushes.Black, x, y);
+                        g.DrawString(item.Quantity.ToString(), font, System.Drawing.Brushes.Black, x + 240, y);
+                        g.DrawString(item.Price.ToString("C"), font, System.Drawing.Brushes.Black, x + 280, y);
+                        y += 20;
+                    }
+
+                    y += 20;
+                    g.DrawString("Total Price:             Rs." + cartPrice.ToString(), new Font("Arial", 13), System.Drawing.Brushes.Black, x + 100, y);
+                    y += 20;
+                    g.DrawString("GiftCard Discount:  Rs." + GiftCardDisc.ToString(), new Font("Arial", 13), System.Drawing.Brushes.Black, x + 100, y);
+                    y += 20;
+                    g.DrawString("Loyalty Discount:    Rs." + loyaltyDisc.ToString(), new Font("Arial", 13), System.Drawing.Brushes.Black, x + 100, y);
+                    y += 20;
+                    g.DrawString("Total Paid Amount: Rs." + totalPrice.ToString(), new Font("Arial", 13), System.Drawing.Brushes.Black, x + 100, y);
+                    y += 10;
+
+
+                    y += 20;
+                    g.DrawString("----------------------------------------------------", new Font("Arial", 16), System.Drawing.Brushes.Black, x, y);
+                    y += 20;
+                    g.DrawString("THANK YOU FOR SHOPPING", new Font("Arial", 20), System.Drawing.Brushes.Black, x, y);
+                    y += 40;
+                    g.DrawString("                                            Print Time:" + DateTime.Now.ToString(), new Font("Arial", 10), System.Drawing.Brushes.Black, x, y);
+                }
+            }
+        }
+        private void ReloadPage()
+        {
+            // Create a new instance of the Users page
+            POS posPage = new POS();
+
+            // Navigate to the new instance of the Users page
+            this.NavigationService.Navigate(posPage);
+        }
+
     }
 }

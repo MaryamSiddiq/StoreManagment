@@ -34,6 +34,13 @@
                     <DataGridTextColumn Header="Loyalty Discount" Binding="{Binding LoyaltyDiscount}" Width="130" />
                     <DataGridTextColumn Header="Paid Amount" Binding="{Binding PaidAmount}" Width="130" />
                     <DataGridTextColumn Header="Date Time" Binding="{Binding DateTime}" Width="130" />
+                    <DataGridTemplateColumn Header="Actions" Width="80">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="View" Width="55" Click="ViewButton_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                     <!-- Additional Columns for Items can be added here -->
                 </DataGrid.Columns>
             </DataGrid>

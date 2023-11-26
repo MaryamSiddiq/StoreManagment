@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\obj\Debug\
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\
 StoreMS
 none
 false
 DEBUG;TRACE
-C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS - Copy\StoreMS\App.xaml
-26-1402199367
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\App.xaml
+27-1619532325
 
-35-1335938735
-671058353671
-Assets\Icons.xaml;Controls\MenuItem.xaml;Controls\UserPopup.xaml;CustomGridView.xaml;Pages\Admin\Categories.xaml;Pages\Admin\Customers.xaml;Pages\Admin\Dashboard.xaml;Pages\Admin\EditCategoryWindow.xaml;Pages\Admin\EditCustomerWindow.xaml;Pages\Admin\EditUserWindow.xaml;Pages\Admin\GiftCards.xaml;Pages\Admin\Logs.xaml;Pages\Admin\Products.xaml;Pages\Admin\Reports.xaml;Pages\Admin\Transactions.xaml;Pages\Admin\Users.xaml;Pages\EditProductWindow.xaml;Pages\User\Account.xaml;Pages\User\Inventory.xaml;Pages\User\POS.xaml;Pages\User\CashierHP.xaml;Pages\Admin\AdminHP.xaml;StartWindow.xaml;Pages\SignIn.xaml;Styles\Style.xaml;Themes\Theme.xaml;
+361973341947
+67-710456817
+Assets\Icons.xaml;Controls\MenuItem.xaml;Controls\UserPopup.xaml;CustomGridView.xaml;Pages\Admin\Categories.xaml;Pages\Admin\Customers.xaml;Pages\Admin\Dashboard.xaml;Pages\Admin\EditCategoryWindow.xaml;Pages\Admin\EditCustomerWindow.xaml;Pages\Admin\EditUserWindow.xaml;Pages\Admin\GiftCards.xaml;Pages\Admin\Logs.xaml;Pages\Admin\Products.xaml;Pages\Admin\Reports.xaml;Pages\Admin\Transactions.xaml;Pages\Admin\Users.xaml;Pages\Admin\ViewTransactionWindow.xaml;Pages\EditProductWindow.xaml;Pages\User\Account.xaml;Pages\User\Inventory.xaml;Pages\User\POS.xaml;Pages\User\CashierHP.xaml;Pages\Admin\AdminHP.xaml;StartWindow.xaml;Pages\SignIn.xaml;Styles\Style.xaml;Themes\Theme.xaml;
 
 False
 

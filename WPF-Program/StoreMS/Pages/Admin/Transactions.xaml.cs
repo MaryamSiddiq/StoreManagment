@@ -62,6 +62,21 @@ namespace StoreMS.Pages.Admin
 
             DataGrid.ItemsSource = transactions;
             DataGrid.Items.Refresh();
-        }        
+        }
+
+        private void ViewButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataGrid.SelectedItem != null)
+            {
+                var selectedItem = (TransactionData)DataGrid.SelectedItem;
+                // Open the EditUserWindow and pass the selected user for editing
+                ViewTransactionWindow viewTransactionWindow = new ViewTransactionWindow(selectedItem);
+                viewTransactionWindow.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please select an item to delete.");
+            }
+        }
     }
 }
