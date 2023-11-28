@@ -35,7 +35,7 @@ namespace StoreMS.Pages.Admin
                 {
                     connection.Open();
 
-                    using (SqlCommand command = new SqlCommand("SELECT * FROM [ExceptionLog]", connection))
+                    using (SqlCommand command = new SqlCommand("SELECT * FROM [ExceptionLog] order by LogDate desc", connection))
                     {
                         using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                         {

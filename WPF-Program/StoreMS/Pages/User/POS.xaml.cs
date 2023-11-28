@@ -400,7 +400,7 @@ namespace StoreMS.Pages.Cashier
             }
         }
 
-
+        bool customerFound = false;
         private void txtCustomerName_GotFocus(object sender, RoutedEventArgs e)
         {
             txtLabelPlace_GotFocus(sender, e);
@@ -434,7 +434,12 @@ namespace StoreMS.Pages.Cashier
                                 loyaltyDisc = loyaltyPoints;
                                 UpdateLoyaltyPoints(customerEmail, loyaltyPoints, "Subtract");
                             }
+                            else
+                            {
+                                MessageBox.Show("Loyalty Points are less than 2000");
+                            }
                             updatePriceLabels();
+                            customerFound = true;
                         }
                         else
                         {
@@ -509,11 +514,19 @@ namespace StoreMS.Pages.Cashier
                 // Retrieve CustomerID using the provided email
                 int customerID = GetCustomerIDByEmail(customerEmail);
 
+                if (customerID == -1 && txtCustomerEmail.Text != "" && !txtCustomerEmail.Text.StartsWith("Enter "))
+                {
+                    addCustomer(txtCustomerEmail.Text, txtCustomerName.Text);
+                    customerID = GetCustomerIDByEmail(customerEmail);
+                }
+
                 // Retrieve GiftCardID using the provided gift card code
                 int giftCardID = GetGiftCardIDByCode(giftCardCode);
 
                 // Insert transaction into the [Transaction] table
                 InsertTransaction(orderID, customerID <= 0 ? 0 : customerID , giftCardID <= 0 ? 0 : giftCardID, amount, loyaltyPoints);
+
+                UpdateLoyaltyPoints(customerEmail, (int)(totalPrice * 0.03M), "Add");
 
                 printReceipt(customerID <= 0 ? "N/A" : customerEmail);
                 // Reload or perform other actions after successful insertion
@@ -523,6 +536,26 @@ namespace StoreMS.Pages.Cashier
             {
                 Exceptions.LogException(ex, "POS.xaml.cs", "btnConfirmOrder_MouseDown");
                 MessageBox.Show($"Error: {ex.Message}");
+            }
+        }
+
+        private void addCustomer(string Email, string Name)
+        {
+            string name = Name;
+            if (Name.StartsWith("Enter "))
+                name = "";
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("INSERT INTO [Customer] (Name, Email, LoyaltyPoints, CreatedAt, UpdatedAt) VALUES (@Name, @Email, @LoyaltyPoints, GETDATE(), GETDATE())", connection))
+                {
+                    command.Parameters.AddWithValue("@Name", name);
+                    command.Parameters.AddWithValue("@Email", Email);
+                    command.Parameters.AddWithValue("@LoyaltyPoints", 0);
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
             }
         }
 

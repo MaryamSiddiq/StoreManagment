@@ -8,7 +8,7 @@ namespace StoreMS
 {
     class Configuration
     {
-        String ConnectionStr = @"Data Source=(local);Initial Catalog=ProjectA;Integrated Security=True";
+        String ConnectionStr = @"Data Source=(local);Initial Catalog=StoreMS;Integrated Security=True";
         SqlConnection con;
         private static Configuration _instance;
         public static Configuration getInstance()

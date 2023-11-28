@@ -85,7 +85,7 @@ namespace StoreMS.Pages.Admin
         }
 
 
-        private void AddUser(string name, string username, string role, bool isActive)
+        private void AddUser(string name, string username, string password, string role, bool isActive)
         {
             // Check if the username already exists
             if (IsUsernameExists(username))
@@ -98,10 +98,11 @@ namespace StoreMS.Pages.Admin
             {
                 connection.Open();
 
-                using (SqlCommand command = new SqlCommand("INSERT INTO [User] (Name, Username, Role, IsActive, CreatedAt, UpdatedAt) VALUES (@Name, @Username, @Role, @IsActive, GETDATE(), GETDATE())", connection))
+                using (SqlCommand command = new SqlCommand("INSERT INTO [User] (Name, Username, Password, Role, IsActive, CreatedAt, UpdatedAt) VALUES (@Name, @Username, @Password, @Role, @IsActive, GETDATE(), GETDATE())", connection))
                 {
                     command.Parameters.AddWithValue("@Name", name);
                     command.Parameters.AddWithValue("@Username", username);
+                    command.Parameters.AddWithValue("@Password", password);
                     command.Parameters.AddWithValue("@Role", role);
                     command.Parameters.AddWithValue("@IsActive", isActive);
                     command.ExecuteNonQuery();
@@ -167,12 +168,13 @@ namespace StoreMS.Pages.Admin
             // Assuming you have fields to input the new user information
             string newName = txtName.Text; // Replace with your actual value
             string newUsername = txtUsername.Text; // Replace with your actual value
+            string newPassword = txtPassword.Text; // Replace with your actual value
             string newRole = "Admin";
             if (CBRole.SelectedIndex == 2)
                 newRole = "Cashier"; // Replace with your actual value
             bool newIsActive = true; // Replace with your actual value
 
-            AddUser(newName, newUsername, newRole, newIsActive);
+            AddUser(newName, newUsername, newPassword, newRole, newIsActive);
             ReloadPage();
         }
 

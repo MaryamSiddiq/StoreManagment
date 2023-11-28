@@ -4,49 +4,81 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:local="clr-namespace:StoreMS.Pages.Admin"
-      xmlns:charts="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      xmlns:oxy="http://oxyplot.org/wpf"
       mc:Ignorable="d"
-      d:DesignHeight="600" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="800" 
       Title="Dashboard">
     <Border Background="{DynamicResource SecundaryBackgroundColor}" CornerRadius="12">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="60" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-
             <!-- Title Label -->
             <Label Grid.Row="0" Content="DASHBOARD"
                    FontSize="40" FontWeight="Bold" FontFamily="Montserrat"
                    HorizontalAlignment="Center" VerticalAlignment="Center" />
-
-            <!-- Today's Sales Chart -->
-            <Border Grid.Row="1"
-                    Background="{DynamicResource PrimaryBackgroundColor}"
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.6*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="2.6*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0"
+                            Background="{DynamicResource FifthBackgroundColor}"
+                            CornerRadius="14"
+                            Margin="20">
+                            <Grid>
+                                <Label Grid.Row="0" Content="Todays Sales" Margin="0 -40 0 0"
+                                   FontSize="24" FontWeight="Bold" FontFamily="Montserrat"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <Label x:Name="lblSales" Grid.Row="0" Content="Rs." Margin="0 40 0 0"
+                                   FontSize="20" FontWeight="Bold" FontFamily="Montserrat"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="1"
+                            Background="{DynamicResource FifthBackgroundColor}"
+                            CornerRadius="14"
+                            Margin="20">
+                            <Grid>
+                                <Label Grid.Row="0" Content="Todays Revenue" Margin="0 -40 0 0"
+                                   FontSize="24" FontWeight="Bold" FontFamily="Montserrat"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <Label x:Name="lblRevenue" Grid.Row="0" Content="Rs." Margin="0 40 0 0"
+                                   FontSize="20" FontWeight="Bold" FontFamily="Montserrat"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                    <Border Grid.Row="1"
+                        Background="{DynamicResource FourthBackgroundColor}"
+                        CornerRadius="14"
+                        Margin="20">
+                        <oxy:PlotView Model="{Binding LineChartModel}" Margin="10"
+                                  Background="{DynamicResource FourthBackgroundColor}"/>
+                    </Border>
+                </Grid>
+               
+                <!-- Sales by Category Chart -->
+                <Border Grid.Column="1"
+                    Background="{DynamicResource FourthBackgroundColor}"
                     CornerRadius="14"
                     Margin="20">
-                <charts:CartesianChart x:Name="todaySalesChart"
-                                       Series="{Binding TodaySalesSeries}"
-                                       LegendLocation="Left" DisableAnimations="True">
-                    <charts:CartesianChart.AxisX>
-                        <charts:Axis Title="Time" />
-                    </charts:CartesianChart.AxisX>
-                    <charts:CartesianChart.AxisY>
-                        <charts:Axis Title="Sales" />
-                    </charts:CartesianChart.AxisY>
-                </charts:CartesianChart>
-            </Border>
+                    <oxy:PlotView x:Name="BarChart" Margin="10"
+                                  Background="{DynamicResource FourthBackgroundColor}"/>
+                </Border>
+            </Grid>
 
-            <!-- Sales by Category Chart -->
-            <Border Grid.Row="2"
-                    Background="{DynamicResource PrimaryBackgroundColor}"
-                    CornerRadius="14"
-                    Margin="20">
-                <charts:PieChart x:Name="salesByCategoryChart"
-                                 Series="{Binding SalesByCategorySeries}"
-                                 LegendLocation="Top" DisableAnimations="True"/>
-            </Border>
         </Grid>
     </Border>
 </Page>

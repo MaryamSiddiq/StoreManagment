@@ -202,11 +202,8 @@ C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Page
 C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\Admin\Reports.baml
 C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\Admin\Transactions.baml
 C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\LiveCharts.dll
-C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\LiveCharts.Wpf.dll
 C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\LiveCharts.pdb
 C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\LiveCharts.xml
-C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\LiveCharts.Wpf.pdb
-C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\LiveCharts.Wpf.xml
 C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\User\POS.g.cs
 C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\User\POS.baml
 C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\User\Account.g.cs
@@ -239,3 +236,11 @@ C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\sv\X
 C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\Admin\ViewTransactionWindow.g.cs
 C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\obj\Debug\Pages\Admin\ViewTransactionWindow.baml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\OxyPlot.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\OxyPlot.Wpf.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\OxyPlot.Wpf.Shared.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\OxyPlot.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\OxyPlot.Wpf.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\OxyPlot.Wpf.Shared.xml
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\ja-JP\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\muham\OneDrive\Desktop\SE Lab\SE Project\StoreMS\StoreMS\bin\Debug\nl-BE\Xceed.Wpf.AvalonDock.resources.dll

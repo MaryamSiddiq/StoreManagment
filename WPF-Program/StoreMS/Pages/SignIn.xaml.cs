@@ -23,6 +23,7 @@ namespace StoreMS.Pages
     /// </summary>
     public partial class SignIn : Page
     {
+        String ConnectionStr = @"Data Source=(local);Initial Catalog=StoreMS;Integrated Security=True";
         string user;
         public SignIn(string user)
         {
@@ -56,17 +57,78 @@ namespace StoreMS.Pages
         }
         private void btnSignIn_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (user == "Admin")
+            string username = txtID.Text.Trim();
+            string password = txtPassword.Text.Trim();
+            if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
             {
-                AdminHP adminHP = new AdminHP();
-                adminHP.ShowDialog();
+                bool isAuthenticated = SignInOperation(username, password);
+
+                if (isAuthenticated)
+                {
+                    if (user == "Admin")
+                    {
+                        AdminHP adminHP = new AdminHP();
+                        adminHP.ShowDialog();
+                    }
+                    else if (user == "Cashier")
+                    {
+                        CashierHP CashierHP = new CashierHP();
+                        CashierHP.ShowDialog();
+                    }
+                }
+                else
+                {
+                    // Show an error message for unsuccessful sign-in
+                    MessageBox.Show("Invalid username or password.");
+                }
             }
-            else if (user == "Cashier")
+            else
             {
-                CashierHP CashierHP = new CashierHP();
-                CashierHP.ShowDialog();
+                // Show an error message for empty username or password
+                MessageBox.Show("Please enter both username and password.");
+            }                       
+        }
+        private bool SignInOperation(string username, string password)
+        {
+            bool isAuthenticated = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionStr))
+                {
+                    connection.Open();
+                    string query = "SELECT Role FROM [User] WHERE Username = @Username AND Password = @Password AND IsActive = 1";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Username", username);
+                        command.Parameters.AddWithValue("@Password", password);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // User authenticated successfully
+                                string role = reader["Role"].ToString();
+
+                                if (role == user)
+                                {
+                                    isAuthenticated = true;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Wrong Credentials!");
+                                }
+                            }
+                        }
+                    }
+                }
             }
-            
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex, "SIgnIn.xaml.xs", "SignInOperation");
+            }
+
+            return isAuthenticated;
         }
 
         private void btnSignIn_MouseEnter(object sender, MouseEventArgs e)
