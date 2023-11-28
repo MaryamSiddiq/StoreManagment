@@ -100,8 +100,8 @@ namespace StoreMS.Pages.Admin
             }
             catch (Exception ex)
             {
-                Exceptions.LogException(ex, "ExceptionLogs.xaml.cs", "txtLogsSearch_TextChanged");
-                // Handle any exceptions here or add logging as needed
+                // Handle any exceptions here
+                Exceptions.LogException(ex, "ExceptionLogs.xaml.cs", "txtLogsSearch_TextChanged");                
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }

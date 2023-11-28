@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -10,6 +10,7 @@ using System.Windows.Media;
 
 namespace StoreMS.Pages.Admin
 {
+    // Model class to represent Gift Card data
     public class GiftCardData
     {
         public string CardCode { get; set; }
@@ -17,51 +18,67 @@ namespace StoreMS.Pages.Admin
         public bool IsActive { get; set; }
     }
 
+    // GiftCards Page class
     public partial class GiftCards : Page
     {
         private string ConnectionString = @"Data Source=(local);Initial Catalog=StoreMS;Integrated Security=True";
         private List<GiftCardData> giftCards = new List<GiftCardData>();
         private string text = null;
 
+        // Constructor
         public GiftCards()
         {
             InitializeComponent();
             LoadGiftCardData();
         }
 
+        // Method to load gift card data from the database
         private void LoadGiftCardData()
         {
+            // Clear existing data
             giftCardDataGrid.ItemsSource = null;
 
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            try
             {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand("SELECT * FROM [GiftCard]", connection))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                    {
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
+                    connection.Open();
 
-                        foreach (DataRow row in dataTable.Rows)
+                    using (SqlCommand command = new SqlCommand("SELECT * FROM [GiftCard]", connection))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                         {
-                            giftCards.Add(new GiftCardData
+                            DataTable dataTable = new DataTable();
+                            adapter.Fill(dataTable);
+
+                            foreach (DataRow row in dataTable.Rows)
                             {
-                                CardCode = row["CardCode"].ToString(),
-                                Balance = Convert.ToDecimal(row["Balance"]),
-                                IsActive = Convert.ToBoolean(row["IsActive"])
-                            });
+                                giftCards.Add(new GiftCardData
+                                {
+                                    CardCode = row["CardCode"].ToString(),
+                                    Balance = Convert.ToDecimal(row["Balance"]),
+                                    IsActive = Convert.ToBoolean(row["IsActive"])
+                                });
+                            }
                         }
                     }
-                }
-                connection.Close();
-            }
 
-            giftCardDataGrid.ItemsSource = giftCards;
-            giftCardDataGrid.Items.Refresh();
+                    connection.Close();
+                }
+
+                // Bind data to the DataGrid
+                giftCardDataGrid.ItemsSource = giftCards;
+                giftCardDataGrid.Items.Refresh();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Exceptions.LogException(ex, "GiftCards", "LoadGiftCardData");
+                MessageBox.Show($"An error occurred while loading gift card data: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
+        // Method to generate gift cards
         private void GenerateGiftCards(int numberOfCards)
         {
             try
@@ -73,7 +90,12 @@ namespace StoreMS.Pages.Admin
                     for (int i = 0; i < numberOfCards; i++)
                     {
                         string cardCode = GenerateCardCode();
-                        decimal initialBalance = decimal.Parse(txtBalance.Text);
+                        decimal initialBalance = ValidateDecimalTextBox(txtBalance, "Please enter a valid balance value.");
+                        if (initialBalance == decimal.MinValue)
+                        {
+                            return;
+                        }
+
                         bool isActive = true;
 
                         using (SqlCommand command = new SqlCommand("INSERT INTO [GiftCard] (CardCode, Balance, IsActive, CreatedAt, UpdatedAt) VALUES (@CardCode, @Balance, @IsActive, GETDATE(), GETDATE())", connection))
@@ -87,14 +109,18 @@ namespace StoreMS.Pages.Admin
 
                     connection.Close();
                 }
+
                 MessageBox.Show($"{numberOfCards} Gift Cards Generated Successfully!");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                // Log the exception
+                Exceptions.LogException(ex, "GiftCards", "GenerateGiftCards");
+                MessageBox.Show($"An error occurred while generating gift cards: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
+        // Method to generate a unique card code
         private string GenerateCardCode()
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString))
@@ -103,13 +129,10 @@ namespace StoreMS.Pages.Admin
 
                 while (true)
                 {
-                    // Generate a random card code
                     Random random = new Random();
                     const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-                    string newCardCode = new string(Enumerable.Repeat(chars, 12)
-                        .Select(s => s[random.Next(s.Length)]).ToArray());
+                    string newCardCode = new string(Enumerable.Repeat(chars, 12).Select(s => s[random.Next(s.Length)]).ToArray());
 
-                    // Check if the generated card code already exists in the database
                     using (SqlCommand checkCardCodeCommand = new SqlCommand("SELECT COUNT(*) FROM [GiftCard] WHERE CardCode = @CardCode", connection))
                     {
                         checkCardCodeCommand.Parameters.AddWithValue("@CardCode", newCardCode);
@@ -117,7 +140,6 @@ namespace StoreMS.Pages.Admin
 
                         if (count == 0)
                         {
-                            // Card code is unique, return it
                             return newCardCode;
                         }
                     }
@@ -125,7 +147,7 @@ namespace StoreMS.Pages.Admin
             }
         }
 
-
+        // Method to delete a gift card
         private void DeleteGiftCard(string cardCode)
         {
             try
@@ -139,16 +161,21 @@ namespace StoreMS.Pages.Admin
                         deleteGiftCardCommand.Parameters.AddWithValue("@CardCode", cardCode);
                         deleteGiftCardCommand.ExecuteNonQuery();
                     }
+
                     connection.Close();
                 }
+
                 MessageBox.Show("Gift Card Deleted Successfully!");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                // Log the exception
+                Exceptions.LogException(ex, "GiftCards", "DeleteGiftCard");
+                MessageBox.Show($"An error occurred while deleting the gift card: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
+        // Event handler for Delete button click
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             if (giftCardDataGrid.SelectedItem != null)
@@ -163,6 +190,7 @@ namespace StoreMS.Pages.Admin
             ReloadPage();
         }
 
+        // Event handler for Generate Cards button click
         private void btnGenerateCards_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (int.TryParse(txtNumberOfCards.Text, out int numberOfCards))
@@ -176,6 +204,7 @@ namespace StoreMS.Pages.Admin
             ReloadPage();
         }
 
+        // Event handler for TextBox GotFocus
         private void txtLabelPlace_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
@@ -184,6 +213,7 @@ namespace StoreMS.Pages.Admin
                 text = textBox.Text;
                 textBox.Text = "";
             }
+
             if (textBox.Text.StartsWith("Search Here..."))
             {
                 text = textBox.Text;
@@ -191,6 +221,7 @@ namespace StoreMS.Pages.Admin
             }
         }
 
+        // Event handler for TextBox LostFocus
         private void txtLabelPlace_LostFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
@@ -201,6 +232,7 @@ namespace StoreMS.Pages.Admin
             txtGiftCardSearch.Text = "Search Here...";
         }
 
+        // Event handler for TextBox TextChanged
         private void txtGiftCardSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
@@ -226,10 +258,13 @@ namespace StoreMS.Pages.Admin
             }
             catch (Exception ex)
             {
+                // Log the exception
+                Exceptions.LogException(ex, "GiftCards", "txtGiftCardSearch_TextChanged");
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
+        // Event handler for MouseEnter on Generate Cards button
         private void btnGenerateCards_MouseEnter(object sender, MouseEventArgs e)
         {
             if (sender is Border border)
@@ -241,6 +276,7 @@ namespace StoreMS.Pages.Admin
             }
         }
 
+        // Event handler for MouseLeave on Generate Cards button
         private void btnGenerateCards_MouseLeave(object sender, MouseEventArgs e)
         {
             if (sender is Border border)
@@ -252,10 +288,26 @@ namespace StoreMS.Pages.Admin
             }
         }
 
+        // Method to reload the page
         private void ReloadPage()
         {
             GiftCards giftCardsPage = new GiftCards();
             this.NavigationService.Navigate(giftCardsPage);
+        }
+
+        // Method to validate a decimal value in a TextBox
+        private decimal ValidateDecimalTextBox(TextBox textBox, string errorMessage)
+        {
+            decimal value = decimal.MinValue;
+            if (!string.IsNullOrWhiteSpace(textBox.Text) && decimal.TryParse(textBox.Text, out value))
+            {
+                value = Convert.ToDecimal(textBox.Text);
+            }
+            else
+            {
+                MessageBox.Show(errorMessage);
+            }
+            return value;
         }
     }
 }

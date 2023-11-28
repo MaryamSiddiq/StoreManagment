@@ -30,7 +30,7 @@ namespace StoreMS.Pages.Admin
         }        
         private void SaveChanges_Click(object sender, RoutedEventArgs e)
         {
-            // Update the editedUser with new values
+            // Update the editedCategory with new values
             editedCategory.CategoryName = txtNewName.Text;
             
             // Close the window

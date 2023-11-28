@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -21,37 +21,47 @@ namespace StoreMS.Pages.Admin
             LoadCategoryData();
         }
 
+        // Load category data from the database and populate the DataGrid
         private void LoadCategoryData()
         {
-            categoryDataGrid.ItemsSource = null;
-
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            try
             {
-                connection.Open();
+                categoryDataGrid.ItemsSource = null;
 
-                using (SqlCommand command = new SqlCommand("SELECT * FROM [Category]", connection))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                    {
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
+                    connection.Open();
 
-                        foreach (DataRow row in dataTable.Rows)
+                    using (SqlCommand command = new SqlCommand("SELECT * FROM [Category]", connection))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                         {
-                            categories.Add(new CategoryData
+                            DataTable dataTable = new DataTable();
+                            adapter.Fill(dataTable);
+
+                            foreach (DataRow row in dataTable.Rows)
                             {
-                                CategoryName = row["Name"].ToString()
-                            });
+                                categories.Add(new CategoryData
+                                {
+                                    CategoryName = row["Name"].ToString()
+                                });
+                            }
                         }
                     }
+                    connection.Close();
                 }
-                connection.Close();
-            }
 
-            categoryDataGrid.ItemsSource = categories;
-            categoryDataGrid.Items.Refresh();
+                categoryDataGrid.ItemsSource = categories;
+                categoryDataGrid.Items.Refresh();
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex, "Categories.xaml.cs", "LoadCategoryData");
+                MessageBox.Show($"An error occurred while loading category data: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
+        // Delete a category from the database
         private void DeleteCategory(string categoryName)
         {
             try
@@ -71,67 +81,97 @@ namespace StoreMS.Pages.Admin
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Exceptions.LogException(ex, "Categories.xaml.cs", "DeleteCategory");
+                MessageBox.Show($"An error occurred while deleting the category: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
+        // Add a new category to the database
         private void AddCategory(string categoryName)
         {
-            // Check if the category already exists
-            if (IsCategoryExists(categoryName))
+            try
             {
-                MessageBox.Show("Category already exists. Please choose a different category name.");
-                return;
-            }
-
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
-            {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand("INSERT INTO [Category] (Name) VALUES (@Name)", connection))
+                // Check if the category already exists
+                if (IsCategoryExists(categoryName))
                 {
-                    command.Parameters.AddWithValue("@Name", categoryName);
-                    command.ExecuteNonQuery();
+                    MessageBox.Show("Category already exists. Please choose a different category name.");
+                    return;
                 }
-                connection.Close();
+
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("INSERT INTO [Category] (Name) VALUES (@Name)", connection))
+                    {
+                        command.Parameters.AddWithValue("@Name", categoryName);
+                        command.ExecuteNonQuery();
+                    }
+                    connection.Close();
+                }
+                MessageBox.Show("Category Added Successfully!");
             }
-            MessageBox.Show("Category Added Successfully!");
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex, "Categories.xaml.cs", "AddCategory");
+                MessageBox.Show($"An error occurred while adding the category: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
+        // Check if a category with the given name already exists
         private bool IsCategoryExists(string categoryName)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            try
             {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand("SELECT COUNT(*) FROM [Category] WHERE Name = @Name", connection))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    command.Parameters.AddWithValue("@Name", categoryName);
-                    int count = (int)command.ExecuteScalar();
+                    connection.Open();
 
-                    // If count is greater than 0, it means the category already exists
-                    return count > 0;
+                    using (SqlCommand command = new SqlCommand("SELECT COUNT(*) FROM [Category] WHERE Name = @Name", connection))
+                    {
+                        command.Parameters.AddWithValue("@Name", categoryName);
+                        int count = (int)command.ExecuteScalar();
+
+                        // If count is greater than 0, it means the category already exists
+                        return count > 0;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex, "Categories.xaml.cs", "IsCategoryExists");
+                MessageBox.Show($"An error occurred while checking if the category exists: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false; // Assume the category exists to avoid further issues
             }
         }
 
+        // Update the name of a category in the database
         private void UpdateCategory(string oldCategoryName, string newCategoryName)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            try
             {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand("UPDATE [Category] SET Name = @NewName WHERE Name = @OldName", connection))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    command.Parameters.AddWithValue("@NewName", newCategoryName);
-                    command.Parameters.AddWithValue("@OldName", oldCategoryName);
-                    command.ExecuteNonQuery();
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("UPDATE [Category] SET Name = @NewName WHERE Name = @OldName", connection))
+                    {
+                        command.Parameters.AddWithValue("@NewName", newCategoryName);
+                        command.Parameters.AddWithValue("@OldName", oldCategoryName);
+                        command.ExecuteNonQuery();
+                    }
+                    connection.Close();
                 }
-                connection.Close();
+                MessageBox.Show("Category Updated Successfully!");
             }
-            MessageBox.Show("Category Updated Successfully!");
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex, "Categories.xaml.cs", "UpdateCategory");
+                MessageBox.Show($"An error occurred while updating the category: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
+        // Handle the click event for the "Delete" button
         private void DeleteCategoryButton_Click(object sender, RoutedEventArgs e)
         {
             if (categoryDataGrid.SelectedItem != null)
@@ -146,13 +186,22 @@ namespace StoreMS.Pages.Admin
             ReloadPage();
         }
 
+        // Handle the mouse down event for the "Add" button
         private void btnAddCategory_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            string newCategoryName = txtCategoryName.Text;
+            string newCategoryName = "";
+            if (txtCategoryName.Text != "" && !txtCategoryName.Text.StartsWith("Enter "))
+                newCategoryName = txtCategoryName.Text;
+            else
+            {
+                MessageBox.Show("Enter a valid category");
+                return;
+            }
             AddCategory(newCategoryName);
             ReloadPage();
         }
 
+        // Handle the click event for the "Edit" button
         private void EditCategoryButton_Click(object sender, RoutedEventArgs e)
         {
             if (categoryDataGrid.SelectedItem != null)
@@ -173,14 +222,25 @@ namespace StoreMS.Pages.Admin
             ReloadPage();
         }
 
+        // Reload the page by creating a new instance and navigating to it
         private void ReloadPage()
         {
-            // Create a new instance of the Categories page
-            Categories categoriesPage = new Categories();
+            try
+            {
+                // Create a new instance of the Categories page
+                Categories categoriesPage = new Categories();
 
-            // Navigate to the new instance of the Categories page
-            this.NavigationService.Navigate(categoriesPage);
+                // Navigate to the new instance of the Categories page
+                this.NavigationService.Navigate(categoriesPage);
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex, "Categories.xaml.cs", "ReloadPage");
+                MessageBox.Show($"An error occurred while reloading the page: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
+
+        // Placeholder handling for search and text entry
         string text = null;
         private void txtLabelPlace_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -207,6 +267,7 @@ namespace StoreMS.Pages.Admin
             txtCategorySearch.Text = "Search Here...";
         }
 
+        // Handle mouse enter event for the "Add" button
         private void btnAddCategory_MouseEnter(object sender, MouseEventArgs e)
         {
             if (sender is Border border)
@@ -218,6 +279,7 @@ namespace StoreMS.Pages.Admin
             }
         }
 
+        // Handle mouse leave event for the "Add" button
         private void btnAddCategory_MouseLeave(object sender, MouseEventArgs e)
         {
             if (sender is Border border)
@@ -229,6 +291,7 @@ namespace StoreMS.Pages.Admin
             }
         }
 
+        // Handle text changed event for the search TextBox
         private void txtCategorySearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
@@ -254,8 +317,10 @@ namespace StoreMS.Pages.Admin
             }
             catch (Exception ex)
             {
-                // Handle any exceptions here or add logging as needed
+                Exceptions.LogException(ex, "Categories.xaml.cs", "txtCategorySearch_TextChanged");
             }
-        }        
+        }
+
+        
     }
 }
