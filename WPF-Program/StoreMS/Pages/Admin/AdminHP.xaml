@@ -6,10 +6,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StoreMS"
         mc:Ignorable="d" Name="home"
-        Title="FYP Management" Height="750" Width="1200"
+        Title="Admin | Store Management System" Height="750" Width="1200"
         WindowStartupLocation="CenterScreen" WindowStyle="None"
         Background="Transparent" AllowsTransparency="True"
-        ResizeMode="NoResize" FontFamily="Poppins">
+        ResizeMode="NoResize" FontFamily="Poppins" WindowState="Maximized">
 
     <Border Background="{DynamicResource PrimaryBackgroundColor}"
             CornerRadius="18">

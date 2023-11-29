@@ -3,7 +3,6 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"      
-      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       xmlns:local="clr-namespace:StoreMS.Pages.Cashier"
       mc:Ignorable="d"
       d:DesignHeight="600" d:DesignWidth="800"
@@ -114,7 +113,8 @@
                              VerticalAlignment="Stretch"
                              Text="Enter the Item Quantity"
                              GotFocus="txtLabelPlace_GotFocus"
-                             LostFocus="txtLabelPlace_LostFocus"/>
+                             LostFocus="txtLabelPlace_LostFocus"
+                             KeyUp="txtItemQuantity_KeyUp"/>
                 </Border>
 
                 

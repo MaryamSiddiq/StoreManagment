@@ -30,10 +30,11 @@ namespace StoreMS
 
         public CashierHP()
         {
-            InitializeComponent();
+            InitializeComponent();            
             POS = new POS();
             Inventory = new Uri("Pages/User/Inventory.xaml", UriKind.RelativeOrAbsolute);
             Account = new Uri("Pages/User/Account.xaml", UriKind.RelativeOrAbsolute);
+            btnAccount.Visibility = Visibility.Hidden;
         }
 
         private void BG_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

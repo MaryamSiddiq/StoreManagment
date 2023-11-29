@@ -267,9 +267,9 @@ namespace StoreMS.Pages.Admin
                     MessageBox.Show("Select a valid status!");
                     return;
                 }
-                bool newIsActive = false;
+                bool newIsActive = true;
                 if (CBActive.SelectedIndex == 2)
-                    newIsActive = true;
+                    newIsActive = false;
 
                 AddUser(newName, newUsername, newPassword, newRole, newIsActive);
                 ReloadPage();

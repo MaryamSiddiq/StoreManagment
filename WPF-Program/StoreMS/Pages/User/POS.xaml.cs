@@ -55,228 +55,400 @@ namespace StoreMS.Pages.Cashier
         }
         private void txtItemName_KeyUp(object sender, KeyEventArgs e)
         {
-            string filter = txtItemName.Text.ToLower();
-            List<string> filteredItems = products.FindAll(item => item.ToLower().Contains(filter));
-
-            listBoxSuggestions.ItemsSource = filteredItems;
-            popupSuggestions.IsOpen = filteredItems.Count > 0;
-
-            if (e.Key == Key.Down)
+            try
             {
-                // Move focus to the ListBox when down arrow is pressed
-                listBoxSuggestions.Focus();
-                /*if (listBoxSuggestions.Items.Count > 0)
-                    listBoxSuggestions.SelectedIndex = 0;*/
+                string filter = txtItemName.Text.ToLower();
+                List<string> filteredItems = products.FindAll(item => item.ToLower().Contains(filter));
+
+                listBoxSuggestions.ItemsSource = filteredItems;
+                popupSuggestions.IsOpen = filteredItems.Count > 0;
+
+                if (e.Key == Key.Down)
+                {
+                    // Move focus to the ListBox when down arrow is pressed
+                    listBoxSuggestions.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Exceptions.LogException(ex, "POS.xaml.cs", "txtItemName_KeyUp");
+
+                // Show an error message to the user
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void listBoxSuggestions_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (listBoxSuggestions.SelectedIndex != -1)
+            try
             {
-                txtItemName.Text = listBoxSuggestions.SelectedItem.ToString();
-                //popupSuggestions.IsOpen = false;
+                if (listBoxSuggestions.SelectedIndex != -1)
+                {
+                    txtItemName.Text = listBoxSuggestions.SelectedItem.ToString();
+                    //popupSuggestions.IsOpen = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Exceptions.LogException(ex, "POS.xaml.cs", "listBoxSuggestions_SelectionChanged");
+
+                // Show an error message to the user
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void txtItemName_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            try
             {
-                // Handle Enter key press
-                HandleEnterKeyPress();
+                if (e.Key == Key.Enter)
+                {
+                    // Handle Enter key press
+                    HandleEnterKeyPress();
+                }
+                if (e.Key == Key.Tab)
+                {
+                    // Handle Tab key press
+                    txtItemQuantity.Focus();
+                }
             }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Exceptions.LogException(ex, "POS.xaml.cs", "txtItemName_PreviewKeyDown");
+
+                // Show an error message to the user
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        private void txtItemQuantity_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.Key == Key.Tab)
+                {
+                    // Handle Tab key press
+                    btnAddCart.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Exceptions.LogException(ex, "POS.xaml.cs", "txtItemQuantity_KeyUp");
+
+                // Show an error message to the user
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }            
         }
 
         private void listBoxSuggestions_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            try
             {
-                // Handle Enter key press
-                HandleEnterKeyPress();
+                if (e.Key == Key.Enter)
+                {
+                    // Handle Enter key press
+                    HandleEnterKeyPress();
+                }
+                if (e.Key == Key.Tab)
+                {
+                    // Handle Tab key press
+                    txtItemQuantity.Focus();
+                }
             }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Exceptions.LogException(ex, "POS.xaml.cs", "listBoxSuggestions_PreviewKeyDown");
+
+                // Show an error message to the user
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
         }
 
         private void HandleEnterKeyPress()
         {
-            if (listBoxSuggestions.SelectedIndex != -1)
+            try
             {
-                txtItemName.Text = listBoxSuggestions.SelectedItem.ToString();
-                popupSuggestions.IsOpen = false;
+                if (listBoxSuggestions.SelectedIndex != -1)
+                {
+                    txtItemName.Text = listBoxSuggestions.SelectedItem.ToString();
+                    popupSuggestions.IsOpen = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Exceptions.LogException(ex, "POS.xaml.cs", "HandleEnterKeyPress");
+
+                // Show an error message to the user
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
         private void LoadProductNames()
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            try
             {
-                connection.Open();
-
-                string query = "SELECT ID, Name FROM Product";
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                    {
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
+                    connection.Open();
 
-                        foreach (DataRow row in dataTable.Rows)
+                    string query = "SELECT ID, Name FROM Product";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                         {
-                            int ID = int.Parse(row["ID"].ToString());
-                            string Name = row["Name"].ToString();
-                            products.Add((ID.ToString() + "-" + Name));
+                            DataTable dataTable = new DataTable();
+                            adapter.Fill(dataTable);
+
+                            foreach (DataRow row in dataTable.Rows)
+                            {
+                                int ID = int.Parse(row["ID"].ToString());
+                                string Name = row["Name"].ToString();
+                                products.Add((ID.ToString() + "-" + Name));
+                            }
                         }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Exceptions.LogException(ex, "POS.xaml.cs", "LoadProductNames");
+
+                // Show an error message to the user
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
+
         private void DeleteItemButton_Click(object sender, RoutedEventArgs e)
         {
-            if (itemsDataGrid.SelectedItem is CartItem selectedItem)
+            try
             {
-                // Remove the selected item from the collection
-                cartItems.Remove(selectedItem);
-                // Update the DataGrid
-                itemsDataGrid.Items.Refresh();
+                if (itemsDataGrid.SelectedItem is CartItem selectedItem)
+                {
+                    // Remove the selected item from the collection
+                    cartItems.Remove(selectedItem);
+                    // Update the DataGrid
+                    itemsDataGrid.Items.Refresh();
 
-                // Update the quantity in the database
-                UpdateQuantityInDatabase(selectedItem.ItemName, selectedItem.Quantity, "Add");
+                    // Update the quantity in the database
+                    UpdateQuantityInDatabase(selectedItem.ItemName, selectedItem.Quantity, "Add");
 
+                    updatePriceLabels();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Exceptions.LogException(ex, "POS.xaml.cs", "DeleteItemButton_Click");
+
+                // Show an error message to the user
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void btnAddCart_MouseDown(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Add item to cart
+                string itemName = txtItemName.Text.Trim();
+                itemName = itemName.Split('-')[1];
+                string quantityText = txtItemQuantity.Text.Trim();
+
+                if (!string.IsNullOrEmpty(itemName) && !string.IsNullOrEmpty(quantityText) && int.TryParse(quantityText, out int quantity))
+                {
+                    if (IsItemAvailableInDatabase(itemName, quantity))
+                    {
+                        // Item is available, create a CartItem object
+                        decimal itemPrice = GetItemPriceFromDatabase(itemName);
+                        CartItem cartItem = new CartItem(itemName, itemPrice, quantity);
+                        // Now you can use the cartItem object as needed
+
+                        // Update the quantity in the database
+                        bool success = UpdateQuantityInDatabase(itemName, quantity, "Remove");
+                        if (success)
+                        {
+                            cartItems.Add(cartItem);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Not enough quantity available.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please enter valid item name and quantity.");
+                }
                 updatePriceLabels();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Exceptions.LogException(ex, "POS.xaml.cs", "btnAddCart_MouseDown");
+
+                // Show an error message to the user
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         private void btnAddCart_MouseEnter(object sender, RoutedEventArgs e)
         {
-            if (sender is Border border)
+            try
             {
-                border.Background = (System.Windows.Media.Brush)FindResource("TertiaryBackgroundColor");
-                addIcon.Fill = (System.Windows.Media.Brush)FindResource("PrimaryBackgroundColor");
-                txtAdd.Foreground = (System.Windows.Media.Brush)FindResource("PrimaryBackgroundColor");
-                txtAdd2.Foreground = (System.Windows.Media.Brush)FindResource("PrimaryBackgroundColor");
+                if (sender is Border border)
+                {
+                    // Change UI elements on mouse enter
+                    border.Background = (System.Windows.Media.Brush)FindResource("TertiaryBackgroundColor");
+                    addIcon.Fill = (System.Windows.Media.Brush)FindResource("PrimaryBackgroundColor");
+                    txtAdd.Foreground = (System.Windows.Media.Brush)FindResource("PrimaryBackgroundColor");
+                    txtAdd2.Foreground = (System.Windows.Media.Brush)FindResource("PrimaryBackgroundColor");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Exceptions.LogException(ex, "POS.xaml.cs", "btnAddCart_MouseEnter");
+
+                // Show an error message to the user
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void btnAddCart_MouseLeave(object sender, RoutedEventArgs e)
         {
-            if (sender is Border border)
+            try
             {
-                border.Background = (System.Windows.Media.Brush)FindResource("PrimaryBackgroundColor");
-                addIcon.Fill = (System.Windows.Media.Brush)FindResource("TextSecundaryColor");
-                txtAdd.Foreground = (System.Windows.Media.Brush)FindResource("TextSecundaryColor");
-                txtAdd2.Foreground = (System.Windows.Media.Brush)FindResource("TextSecundaryColor");
-            }
-        }       
-
-        private void btnAddCart_MouseDown(object sender, RoutedEventArgs e)
-        {
-            // Add item to cart
-            string itemName = txtItemName.Text.Trim();
-            itemName = itemName.Split('-')[1];
-            string quantityText = txtItemQuantity.Text.Trim();
-
-            if (!string.IsNullOrEmpty(itemName) && !string.IsNullOrEmpty(quantityText) && int.TryParse(quantityText, out int quantity))
-            {
-                if (IsItemAvailableInDatabase(itemName, quantity))
+                if (sender is Border border)
                 {
-                    // Item is available, create a CartItem object
-                    decimal itemPrice = GetItemPriceFromDatabase(itemName);
-                    CartItem cartItem = new CartItem(itemName, itemPrice, quantity);
-                    // Now you can use the cartItem object as needed
-
-                    // Update the quantity in the database
-                    bool success = UpdateQuantityInDatabase(itemName, quantity, "Remove");
-                    if (success)
-                    {
-                        cartItems.Add(cartItem);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Not enough quantity available.");
+                    // Change UI elements on mouse leave
+                    border.Background = (System.Windows.Media.Brush)FindResource("PrimaryBackgroundColor");
+                    addIcon.Fill = (System.Windows.Media.Brush)FindResource("TextSecundaryColor");
+                    txtAdd.Foreground = (System.Windows.Media.Brush)FindResource("TextSecundaryColor");
+                    txtAdd2.Foreground = (System.Windows.Media.Brush)FindResource("TextSecundaryColor");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Please enter valid item name and quantity.");
+                // Log the exception
+                Exceptions.LogException(ex, "POS.xaml.cs", "btnAddCart_MouseLeave");
+
+                // Show an error message to the user
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            updatePriceLabels();
         }
+
         private bool IsItemAvailableInDatabase(string itemName, int requestedQuantity)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            try
             {
-                connection.Open();
-
-                string query = "SELECT Quantity FROM [Product] WHERE Name = @ItemName";
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    command.Parameters.AddWithValue("@ItemName", itemName);
+                    connection.Open();
 
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    string query = "SELECT Quantity FROM [Product] WHERE Name = @ItemName";
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        if (reader.Read())
+                        command.Parameters.AddWithValue("@ItemName", itemName);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            int availableQuantity = reader.GetInt32(0);
-                            return availableQuantity >= requestedQuantity;
+                            if (reader.Read())
+                            {
+                                int availableQuantity = reader.GetInt32(0);
+                                return availableQuantity >= requestedQuantity;
+                            }
                         }
                     }
                 }
-                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Exceptions.LogException(ex, "POS.xaml.cs", "IsItemAvailableInDatabase");
+
+                // Show an error message to the user
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             return false;
         }
+
         private decimal GetItemPriceFromDatabase(string itemName)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            try
             {
-                connection.Open();
-
-                string query = "SELECT Price FROM Product WHERE Name = @ItemName";
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    command.Parameters.AddWithValue("@ItemName", itemName);
+                    connection.Open();
 
-                    object result = command.ExecuteScalar();
-                    if (result != null && decimal.TryParse(result.ToString(), out decimal price))
+                    string query = "SELECT Price FROM Product WHERE Name = @ItemName";
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        return price;
+                        command.Parameters.AddWithValue("@ItemName", itemName);
+
+                        object result = command.ExecuteScalar();
+                        if (result != null && decimal.TryParse(result.ToString(), out decimal price))
+                        {
+                            return price;
+                        }
                     }
                 }
-                connection.Close();
             }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Exceptions.LogException(ex, "POS.xaml.cs", "GetItemPriceFromDatabase");
+
+                // Show an error message to the user
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
             return 0.0m;
         }
+
         private bool UpdateQuantityInDatabase(string itemName, int quantity, string action)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            try
             {
-                connection.Open();
-
-                string updateQuery = "UPDATE Product SET Quantity = Quantity - @RequestedQuantity WHERE Name = @ItemName";
-                if (action == "Add")
-                    updateQuery = "UPDATE Product SET Quantity = Quantity + @RequestedQuantity WHERE Name = @ItemName";
-                using (SqlCommand updateCommand = new SqlCommand(updateQuery, connection))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    updateCommand.Parameters.AddWithValue("@RequestedQuantity", quantity);
-                    updateCommand.Parameters.AddWithValue("@ItemName", itemName);
+                    connection.Open();
 
-                    int rowsAffected = updateCommand.ExecuteNonQuery();
-
-                    if (rowsAffected <= 0)
+                    string updateQuery = "UPDATE Product SET Quantity = Quantity - @RequestedQuantity WHERE Name = @ItemName";
+                    if (action == "Add")
+                        updateQuery = "UPDATE Product SET Quantity = Quantity + @RequestedQuantity WHERE Name = @ItemName";
+                    using (SqlCommand updateCommand = new SqlCommand(updateQuery, connection))
                     {
-                        // Handle the case where the update did not succeed
-                        return false;
+                        updateCommand.Parameters.AddWithValue("@RequestedQuantity", quantity);
+                        updateCommand.Parameters.AddWithValue("@ItemName", itemName);
+
+                        int rowsAffected = updateCommand.ExecuteNonQuery();
+
+                        if (rowsAffected <= 0)
+                        {
+                            // Handle the case where the update did not succeed
+                            return false;
+                        }
                     }
                 }
-
-                connection.Close();
             }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Exceptions.LogException(ex, "POS.xaml.cs", "UpdateQuantityInDatabase");
+
+                // Show an error message to the user
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
             return true;
         }
-
-        
-
-
 
         private void UpdateTotalPrice()
         {
@@ -330,7 +502,11 @@ namespace StoreMS.Pages.Cashier
         private void btnGiftCardEnter_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             string giftCardCode = txtGiftCardCode.Text.Trim();
-
+            if (string.IsNullOrWhiteSpace(giftCardCode) || giftCardCode.StartsWith("Enter "))
+            {
+                MessageBox.Show("Enter a valid GiftCard code");
+                return;
+            }
             // Query the database to check the gift card
             decimal balance = CheckGiftCard(giftCardCode);
 
@@ -339,11 +515,9 @@ namespace StoreMS.Pages.Cashier
                 // Gift card is valid, and its balance is returned
                 GiftCardDisc = balance;
 
-                // You can also update the IsActive to false in the database
+                // Update the IsActive to false in the database
                 UpdateGiftCardStatus(giftCardCode);
                 updatePriceLabels();
-
-                // Perform other actions as needed
             }
             else
             {
@@ -354,30 +528,40 @@ namespace StoreMS.Pages.Cashier
 
         private decimal CheckGiftCard(string cardCode)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            try
             {
-                connection.Open();
-
-                string query = "SELECT Balance, IsActive FROM GiftCard WHERE CardCode = @CardCode";
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    command.Parameters.AddWithValue("@CardCode", cardCode);
+                    connection.Open();
 
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    string query = "SELECT Balance, IsActive FROM GiftCard WHERE CardCode = @CardCode";
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        if (reader.Read())
-                        {
-                            bool isActive = reader.GetBoolean(reader.GetOrdinal("IsActive"));
+                        command.Parameters.AddWithValue("@CardCode", cardCode);
 
-                            if (isActive)
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
                             {
-                                // Gift card is active, return the balance
-                                return reader.GetDecimal(reader.GetOrdinal("Balance"));
+                                bool isActive = reader.GetBoolean(reader.GetOrdinal("IsActive"));
+
+                                if (isActive)
+                                {
+                                    // Gift card is active, return the balance
+                                    return reader.GetDecimal(reader.GetOrdinal("Balance"));
+                                }
                             }
                         }
                     }
                 }
-                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Exceptions.LogException(ex, "POS.xaml.cs", "CheckGiftCard");
+
+                // Show an error message to the user
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             // Gift card not found or not active
@@ -386,97 +570,130 @@ namespace StoreMS.Pages.Cashier
 
         private void UpdateGiftCardStatus(string cardCode)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            try
             {
-                connection.Open();
-
-                string updateQuery = "UPDATE GiftCard SET IsActive = 0 WHERE CardCode = @CardCode";
-                using (SqlCommand updateCommand = new SqlCommand(updateQuery, connection))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    updateCommand.Parameters.AddWithValue("@CardCode", cardCode);
-                    updateCommand.ExecuteNonQuery();
+                    connection.Open();
+
+                    string updateQuery = "UPDATE GiftCard SET IsActive = 0 WHERE CardCode = @CardCode";
+                    using (SqlCommand updateCommand = new SqlCommand(updateQuery, connection))
+                    {
+                        updateCommand.Parameters.AddWithValue("@CardCode", cardCode);
+                        updateCommand.ExecuteNonQuery();
+                    }
                 }
-                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Exceptions.LogException(ex, "POS.xaml.cs", "UpdateGiftCardStatus");
+
+                // Show an error message to the user
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         bool customerFound = false;
         private void txtCustomerName_GotFocus(object sender, RoutedEventArgs e)
         {
-            txtLabelPlace_GotFocus(sender, e);
-
-            // Get the email from txtCustomerEmail
-            string customerEmail = txtCustomerEmail.Text.Trim();
-
-            // Check if the customer with the given email exists in the database
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            try
             {
-                connection.Open();
+                txtLabelPlace_GotFocus(sender, e);
 
-                // Assuming your Customer table has columns ID, Name, Email, and LoyaltyPoints
-                string query = "SELECT Name, LoyaltyPoints FROM Customer WHERE Email = @Email";
-                using (SqlCommand command = new SqlCommand(query, connection))
+                // Get the email from txtCustomerEmail
+                string customerEmail = txtCustomerEmail.Text.Trim();
+
+                // Check if the customer with the given email exists in the database
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    command.Parameters.AddWithValue("@Email", customerEmail);
+                    connection.Open();
 
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    // Assuming your Customer table has columns ID, Name, Email, and LoyaltyPoints
+                    string query = "SELECT Name, LoyaltyPoints FROM Customer WHERE Email = @Email";
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        if (reader.Read())
-                        {
-                            // Customer found, populate txtCustomerName and get LoyaltyPoints
-                            string customerName = reader["Name"].ToString();
-                            int loyaltyPoints = Convert.ToInt32(reader["LoyaltyPoints"]);
+                        command.Parameters.AddWithValue("@Email", customerEmail);
 
-                            txtCustomerName.Text = customerName;
-                            // Assuming you have a txtLoyaltyPoints TextBox, update its text
-                            if (loyaltyPoints >= 2000)
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
                             {
-                                loyaltyDisc = loyaltyPoints;
-                                UpdateLoyaltyPoints(customerEmail, loyaltyPoints, "Subtract");
+                                // Customer found, populate txtCustomerName and get LoyaltyPoints
+                                string customerName = reader["Name"].ToString();
+                                int loyaltyPoints = Convert.ToInt32(reader["LoyaltyPoints"]);
+
+                                txtCustomerName.Text = customerName;
+                                // Using the loyalty points of customer to give discount
+                                if (loyaltyPoints >= 1000)
+                                {
+                                    loyaltyDisc = loyaltyPoints;
+                                    UpdateLoyaltyPoints(customerEmail, loyaltyPoints, "Subtract");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Loyalty Points are less than 1000");
+                                }
+                                updatePriceLabels();
+                                customerFound = true;
                             }
                             else
                             {
-                                MessageBox.Show("Loyalty Points are less than 2000");
+                                // Customer not found, you may handle this case based on your requirements
                             }
-                            updatePriceLabels();
-                            customerFound = true;
-                        }
-                        else
-                        {
-                            // Customer not found, you may handle this case based on your requirements
                         }
                     }
                 }
-                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Exceptions.LogException(ex, "POS.xaml.cs", "txtCustomerName_GotFocus");
+
+                // Show an error message to the user
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
         private bool UpdateLoyaltyPoints(string customerEmail, int newLoyaltyPoints, string action)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            try
             {
-                connection.Open();
-
-                string updateQuery = "UPDATE Customer SET LoyaltyPoints = LoyaltyPoints - @NewLoyaltyPoints WHERE Email = @Email";
-                if (action == "Add")
-                    updateQuery = "UPDATE Customer SET LoyaltyPoints = LoyaltyPoints + @NewLoyaltyPoints WHERE Email = @Email";
-
-                using (SqlCommand updateCommand = new SqlCommand(updateQuery, connection))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    updateCommand.Parameters.AddWithValue("@Email", customerEmail);
-                    updateCommand.Parameters.AddWithValue("@NewLoyaltyPoints", newLoyaltyPoints);
+                    connection.Open();
 
-                    int rowsAffected = updateCommand.ExecuteNonQuery();
+                    string updateQuery = "UPDATE Customer SET LoyaltyPoints = LoyaltyPoints - @NewLoyaltyPoints WHERE Email = @Email";
+                    if (action == "Add")
+                        updateQuery = "UPDATE Customer SET LoyaltyPoints = LoyaltyPoints + @NewLoyaltyPoints WHERE Email = @Email";
 
-                    if (rowsAffected > 0)
+                    using (SqlCommand updateCommand = new SqlCommand(updateQuery, connection))
                     {
-                        // The update was successful
-                        return true;
+                        updateCommand.Parameters.AddWithValue("@Email", customerEmail);
+                        updateCommand.Parameters.AddWithValue("@NewLoyaltyPoints", newLoyaltyPoints);
+
+                        int rowsAffected = updateCommand.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            // The update was successful
+                            return true;
+                        }
                     }
                 }
-                connection.Close();
             }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Exceptions.LogException(ex, "POS.xaml.cs", "UpdateLoyaltyPoints");
+
+                // Show an error message to the user
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
             return false;
         }
+
         private void btnConfirmOrder_MouseEnter(object sender, RoutedEventArgs e)
         {
             if (sender is Border border)
@@ -498,25 +715,32 @@ namespace StoreMS.Pages.Cashier
         {
             try
             {
-                // Implement your order confirmation logic here
+                // Implementing order confirmation logic here
                 string productList = getProductList();
+                if (string.IsNullOrEmpty(productList))
+                {
+                    MessageBox.Show("Add Products to cart first!");
+                    return;
+                }
                 decimal totalAmount = cartPrice;
                 decimal amount = totalPrice;
                 string customerEmail = txtCustomerEmail.Text;
                 string giftCardCode = txtGiftCardCode.Text;
-                int loyaltyPoints = Convert.ToInt32(loyaltyDisc); // Replace with your actual logic to get loyalty points
+                int loyaltyPoints = Convert.ToInt32(loyaltyDisc);
 
                 // Insert order into the [Order] table
                 int orderID = InsertOrder(productList, totalAmount);
 
                 if (orderID == -1)
                     return;
+
                 // Retrieve CustomerID using the provided email
                 int customerID = GetCustomerIDByEmail(customerEmail);
 
-                if (customerID == -1 && txtCustomerEmail.Text != "" && !txtCustomerEmail.Text.StartsWith("Enter "))
+                // Add customer if not found
+                if (customerID == -1 && !string.IsNullOrEmpty(customerEmail) && !customerEmail.StartsWith("Enter "))
                 {
-                    addCustomer(txtCustomerEmail.Text, txtCustomerName.Text);
+                    addCustomer(customerEmail, txtCustomerName.Text);
                     customerID = GetCustomerIDByEmail(customerEmail);
                 }
 
@@ -524,16 +748,20 @@ namespace StoreMS.Pages.Cashier
                 int giftCardID = GetGiftCardIDByCode(giftCardCode);
 
                 // Insert transaction into the [Transaction] table
-                InsertTransaction(orderID, customerID <= 0 ? 0 : customerID , giftCardID <= 0 ? 0 : giftCardID, amount, loyaltyPoints);
+                InsertTransaction(orderID, customerID <= 0 ? (int?)null : customerID, giftCardID <= 0 ? (int?)null : giftCardID, amount, loyaltyPoints);
 
+                // Update loyalty points
                 UpdateLoyaltyPoints(customerEmail, (int)(totalPrice * 0.03M), "Add");
 
+                // Print the receipt
                 printReceipt(customerID <= 0 ? "N/A" : customerEmail);
+
                 // Reload or perform other actions after successful insertion
                 ReloadPage();
             }
             catch (Exception ex)
             {
+                // Log the exception and show an error message
                 Exceptions.LogException(ex, "POS.xaml.cs", "btnConfirmOrder_MouseDown");
                 MessageBox.Show($"Error: {ex.Message}");
             }
@@ -541,23 +769,34 @@ namespace StoreMS.Pages.Cashier
 
         private void addCustomer(string Email, string Name)
         {
+            // Handle adding a new customer to the database
             string name = Name;
             if (Name.StartsWith("Enter "))
                 name = "";
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            try
             {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand("INSERT INTO [Customer] (Name, Email, LoyaltyPoints, CreatedAt, UpdatedAt) VALUES (@Name, @Email, @LoyaltyPoints, GETDATE(), GETDATE())", connection))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    command.Parameters.AddWithValue("@Name", name);
-                    command.Parameters.AddWithValue("@Email", Email);
-                    command.Parameters.AddWithValue("@LoyaltyPoints", 0);
-                    command.ExecuteNonQuery();
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("INSERT INTO [Customer] (Name, Email, LoyaltyPoints, CreatedAt, UpdatedAt) VALUES (@Name, @Email, @LoyaltyPoints, GETDATE(), GETDATE())", connection))
+                    {
+                        command.Parameters.AddWithValue("@Name", name);
+                        command.Parameters.AddWithValue("@Email", Email);
+                        command.Parameters.AddWithValue("@LoyaltyPoints", 0);
+                        command.ExecuteNonQuery();
+                    }
+                    connection.Close();
                 }
-                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception and show an error message
+                Exceptions.LogException(ex, "POS.xaml.cs", "addCustomer");
+                MessageBox.Show($"Error adding customer: {ex.Message}");
             }
         }
+
 
         public int InsertOrder(string productList, decimal totalAmount)
         {
@@ -570,7 +809,7 @@ namespace StoreMS.Pages.Cashier
                     using (SqlCommand cmd = new SqlCommand("INSERT INTO [Order] (ProductsList, TotalAmount, CreatedAt, UpdatedAt) VALUES (@ProductsList, @TotalAmount, GETDATE(), GETDATE()); SELECT SCOPE_IDENTITY();", connection))
                     {
                         cmd.Parameters.AddWithValue("@ProductsList", productList);
-                        cmd.Parameters.AddWithValue("@TotalAmount", totalAmount);                        
+                        cmd.Parameters.AddWithValue("@TotalAmount", totalAmount);
                         // Retrieve the inserted order ID
                         id = Convert.ToInt32(cmd.ExecuteScalar());
                     }
@@ -580,11 +819,13 @@ namespace StoreMS.Pages.Cashier
             }
             catch (Exception ex)
             {
+                // Log the exception and show an error message
                 Exceptions.LogException(ex, "POS.xaml.cs", "InsertOrder");
+                MessageBox.Show($"Error inserting order: {ex.Message}");
                 return -1;
             }
-            
         }
+
         public int GetCustomerIDByEmail(string customerEmail)
         {
             try
@@ -607,10 +848,13 @@ namespace StoreMS.Pages.Cashier
             }
             catch (Exception ex)
             {
+                // Log the exception and show an error message
                 Exceptions.LogException(ex, "POS.xaml.cs", "GetCustomerIDByEmail");
+                MessageBox.Show($"Error getting customer ID: {ex.Message}");
                 return -1;
-            }            
+            }
         }
+
         public int GetGiftCardIDByCode(string giftCardCode)
         {
             try
@@ -633,62 +877,82 @@ namespace StoreMS.Pages.Cashier
             }
             catch (Exception ex)
             {
-                Exceptions.LogException(ex, "POS.xaml.cs", "GetCustomerIDByEmail");
+                // Log the exception and show an error message
+                Exceptions.LogException(ex, "POS.xaml.cs", "GetGiftCardIDByCode");
+                MessageBox.Show($"Error getting gift card ID: {ex.Message}");
                 return -1;
             }
-            
         }
+
         public void InsertTransaction(int orderID, int? customerID, int? giftCardID, decimal amount, int? loyaltyPoints)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            try
             {
-                connection.Open();
-                using (SqlCommand cmd = new SqlCommand("INSERT INTO [Transaction] (OrderID, CustomerID, GiftCardID, Amount, LoyaltyPrice, CreatedAt, UpdatedAt) VALUES (@OrderID, @CustomerID, @GiftCardID, @Amount, @LoyaltyPrice, GETDATE(), GETDATE())", connection))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    cmd.Parameters.AddWithValue("@OrderID", orderID);
+                    connection.Open();
+                    using (SqlCommand cmd = new SqlCommand("INSERT INTO [Transaction] (OrderID, CustomerID, GiftCardID, Amount, LoyaltyPrice, CreatedAt, UpdatedAt) VALUES (@OrderID, @CustomerID, @GiftCardID, @Amount, @LoyaltyPrice, GETDATE(), GETDATE())", connection))
+                    {
+                        cmd.Parameters.AddWithValue("@OrderID", orderID);
 
-                    if (customerID.HasValue && customerID.Value > 0)
-                        cmd.Parameters.AddWithValue("@CustomerID", customerID.Value);
-                    else
-                        cmd.Parameters.AddWithValue("@CustomerID", DBNull.Value);
+                        if (customerID.HasValue && customerID.Value > 0)
+                            cmd.Parameters.AddWithValue("@CustomerID", customerID.Value);
+                        else
+                            cmd.Parameters.AddWithValue("@CustomerID", DBNull.Value);
 
-                    if (giftCardID.HasValue && giftCardID.Value > 0)
-                        cmd.Parameters.AddWithValue("@GiftCardID", giftCardID.Value);
-                    else
-                        cmd.Parameters.AddWithValue("@GiftCardID", DBNull.Value);
+                        if (giftCardID.HasValue && giftCardID.Value > 0)
+                            cmd.Parameters.AddWithValue("@GiftCardID", giftCardID.Value);
+                        else
+                            cmd.Parameters.AddWithValue("@GiftCardID", DBNull.Value);
 
-                    cmd.Parameters.AddWithValue("@Amount", amount);
+                        cmd.Parameters.AddWithValue("@Amount", amount);
 
-                    if (loyaltyPoints.HasValue && loyaltyPoints.Value > 0)
-                        cmd.Parameters.AddWithValue("@LoyaltyPrice", loyaltyPoints.Value);
-                    else
-                        cmd.Parameters.AddWithValue("@LoyaltyPrice", DBNull.Value);
+                        if (loyaltyPoints.HasValue && loyaltyPoints.Value > 0)
+                            cmd.Parameters.AddWithValue("@LoyaltyPrice", loyaltyPoints.Value);
+                        else
+                            cmd.Parameters.AddWithValue("@LoyaltyPrice", DBNull.Value);
 
-                    // Execute the insert query
-                    cmd.ExecuteNonQuery();
+                        // Execute the insert query
+                        cmd.ExecuteNonQuery();
+                    }
                 }
-
+            }
+            catch (Exception ex)
+            {
+                // Log the exception and show an error message
+                Exceptions.LogException(ex, "POS.xaml.cs", "InsertTransaction");
+                MessageBox.Show($"Error inserting transaction: {ex.Message}");
             }
         }
 
         private string getProductList()
         {
-            StringBuilder productListBuilder = new StringBuilder();
-
-            foreach (var item in itemsDataGrid.Items)
+            try
             {
-                // Assuming your item has properties ItemName, Price, and Quantity
-                string itemName = (string)item.GetType().GetProperty("ItemName").GetValue(item, null);
-                decimal price = (decimal)item.GetType().GetProperty("Price").GetValue(item, null);
-                int quantity = (int)item.GetType().GetProperty("Quantity").GetValue(item, null);
+                StringBuilder productListBuilder = new StringBuilder();
 
-                string productInfo = $"{itemName}-{price}-{quantity};";
-                productListBuilder.Append(productInfo);
+                foreach (var item in itemsDataGrid.Items)
+                {
+                    // Assuming your item has properties ItemName, Price, and Quantity
+                    string itemName = (string)item.GetType().GetProperty("ItemName").GetValue(item, null);
+                    decimal price = (decimal)item.GetType().GetProperty("Price").GetValue(item, null);
+                    int quantity = (int)item.GetType().GetProperty("Quantity").GetValue(item, null);
+
+                    string productInfo = $"{itemName}-{price}-{quantity};";
+                    productListBuilder.Append(productInfo);
+                }
+
+                return productListBuilder.ToString().TrimEnd(';');
             }
-
-            return productListBuilder.ToString().TrimEnd(';');
-
+            catch (Exception ex)
+            {
+                // Log the exception and show an error message
+                Exceptions.LogException(ex, "POS.xaml.cs", "getProductList");
+                MessageBox.Show($"Error getting product list: {ex.Message}");
+                return null;
+            }
         }
+
 
         /// <summary>
         /// /////////////// Printing Logic /////////////////////
@@ -716,7 +980,6 @@ namespace StoreMS.Pages.Cashier
 
         private void PrintReceiptPage(object sender, PrintPageEventArgs e)
         {
-            // Set the desired width and let the height be automatic
             
             // Define the drawing area for the receipt content
             float x = e.MarginBounds.Left;
@@ -780,7 +1043,6 @@ namespace StoreMS.Pages.Cashier
 
             // Navigate to the new instance of the Users page
             this.NavigationService.Navigate(posPage);
-        }
-
+        }        
     }
 }
